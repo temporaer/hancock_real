@@ -1,0 +1,482 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.7	//
+BOOST_PYTHON_MODULE	src/test/test_ext.cpp	/^BOOST_PYTHON_MODULE(test_ext)$/;"	f
+BOOST_PYTHON_MODULE	src/wrapper/main.cpp	/^BOOST_PYTHON_MODULE(_internal)$/;"	f
+EXPOSE_ALL_TYPES	src/wrapper/array.hpp	1185;"	d
+HEADER_SEEN_HELPERS_HPP	src/wrapper/helpers.hpp	18;"	d
+HEADER_SEEN_META_HPP	src/wrapper/meta.hpp	18;"	d
+HEADER_SEEN_PYUBLAS_ELEMENTWISE_OP_HPP	src/cpp/pyublas/elementwise_op.hpp	18;"	d
+HEADER_SEEN_PYUBLAS_GENERIC_UBLAS_HPP	src/cpp/pyublas/generic_ublas.hpp	18;"	d
+PYUBLAS_PYERROR	src/cpp/pyublas/python_helpers.hpp	28;"	d
+ParameterizedType	src/python/__init__.py	/^class ParameterizedType(object):$/;"	c
+TestMatrices	src/python/test.py	/^class TestMatrices(unittest.TestCase):$/;"	c
+_AFAYFYDASDFAH_PYUBLAS_HEADER_SEEN_NUMPY_HPP	src/cpp/pyublas/numpy.hpp	17;"	d
+_AFAYFYDASDFAH_PYUBLAS_HEADER_SEEN_PYTHON_HELPERS_HPP	src/cpp/pyublas/python_helpers.hpp	18;"	d
+__call__	src/python/__init__.py	/^    def __call__(self, dtype):$/;"	m	class:ParameterizedType	file:
+__init__	src/python/__init__.py	/^    def __init__(self, name, use_dict=None):$/;"	m	class:ParameterizedType
+__str__	src/python/__init__.py	/^    def __str__(self):$/;"	m	class:ParameterizedType	file:
+_add_python_methods	src/python/__init__.py	/^def _add_python_methods():$/;"	f
+_array_importer	src/cpp/pyublas/numpy.hpp	/^  } _array_importer;$/;"	v	typeref:struct:__anon1::_pyublas_array_importer
+_dtype_name	src/python/__init__.py	/^def _dtype_name(dtype):$/;"	f
+_equal	src/python/__init__.py	/^    def _equal(a, b):$/;"	f	function:_add_python_methods
+_is_matrix	src/python/__init__.py	/^    def _is_matrix(value):$/;"	f	function:_add_python_methods
+_is_number	src/python/__init__.py	/^    def _is_number(value):$/;"	f	function:_add_python_methods
+_not_equal	src/python/__init__.py	/^    def _not_equal(a, b):$/;"	f	function:_add_python_methods
+_pyublas_array_importer	src/cpp/pyublas/numpy.hpp	/^    _pyublas_array_importer()$/;"	f	struct:__anon1::_pyublas_array_importer
+_pyublas_array_importer	src/cpp/pyublas/numpy.hpp	/^  static struct _pyublas_array_importer$/;"	s	namespace:__anon1
+_repr_sparse_matrix	src/python/__init__.py	/^    def _repr_sparse_matrix(array): return _stringify_sparse_matrix(array, repr)$/;"	f	function:_add_python_methods
+_str_sparse_matrix	src/python/__init__.py	/^    def _str_sparse_matrix(array): return _stringify_sparse_matrix(array, str)$/;"	f	function:_add_python_methods
+_stringify_sparse_matrix	src/python/__init__.py	/^    def _stringify_sparse_matrix(array, num_stringifier, max_length=80):$/;"	f	function:_add_python_methods
+_wrap_vector	src/python/__init__.py	/^    def _wrap_vector(strs, max_length=80, indent=8*" ", first_indent=0):$/;"	f	function:_add_python_methods
+abs_square_sum	src/wrapper/array.hpp	/^abs_square_sum(MatrixType &mat)$/;"	f	namespace:__anon2
+absolute_value	src/wrapper/helpers.hpp	/^inline T absolute_value(const T &x)$/;"	f	namespace:helpers
+absolute_value	src/wrapper/helpers.hpp	/^inline T2 absolute_value(const std::complex<T2> &x)$/;"	f	namespace:helpers
+absolute_value_squared	src/wrapper/helpers.hpp	/^inline T absolute_value_squared(const T &x)$/;"	f	namespace:helpers
+absolute_value_squared	src/wrapper/helpers.hpp	/^inline T2 absolute_value_squared(const std::complex<T2> &x)$/;"	f	namespace:helpers
+add_block	src/wrapper/array.hpp	/^void add_block(MatrixType &mat, $/;"	f	namespace:__anon2
+add_element_inplace	src/wrapper/array.hpp	/^void add_element_inplace(MatrixType &mat, $/;"	f	namespace:__anon2
+add_element_inplace	src/wrapper/array.hpp	/^void add_element_inplace(ublas::coordinate_matrix<V, ublas::column_major> &mat, $/;"	f	namespace:__anon2
+add_scattered	src/wrapper/array.hpp	/^void add_scattered(MatrixType &mat, $/;"	f	namespace:__anon2
+add_scattered_with_skip	src/wrapper/array.hpp	/^void add_scattered_with_skip(MatrixType &mat, $/;"	f	namespace:__anon2
+apply	src/cpp/pyublas/elementwise_op.hpp	/^        static super::result_type apply(super::argument_type x)$/;"	f	class:pyublas::unary_ops::fabs
+apply	src/cpp/pyublas/elementwise_op.hpp	/^        static typename super::result_type apply($/;"	f	class:pyublas::binary_ops::max
+apply	src/cpp/pyublas/elementwise_op.hpp	/^        static typename super::result_type apply($/;"	f	class:pyublas::binary_ops::min
+apply	src/cpp/pyublas/elementwise_op.hpp	/^      apply(const boost::numeric::ublas::vector_expression<E> &e) $/;"	f	struct:pyublas::vector_square_sum
+apply	src/cpp/pyublas/elementwise_op.hpp	/^      static result_type apply(D size, I it) $/;"	f	struct:pyublas::vector_square_sum
+apply	src/cpp/pyublas/elementwise_op.hpp	/^      static result_type apply(I it, const I &it_end) $/;"	f	struct:pyublas::vector_square_sum
+apply	src/cpp/pyublas/elementwise_op.hpp	/^    apply($/;"	f	struct:pyublas::binary_op
+apply	src/cpp/pyublas/elementwise_op.hpp	/^    apply(const boost::numeric::ublas::matrix_expression<E> &e) $/;"	f	struct:pyublas::unary_op
+apply	src/cpp/pyublas/elementwise_op.hpp	/^    apply(const boost::numeric::ublas::vector_expression<E> &e) $/;"	f	struct:pyublas::unary_op
+apply	src/wrapper/array.hpp	/^  inline static handle<> apply(const MatrixType &m)$/;"	f	struct:__anon2::imagWrapper
+apply	src/wrapper/array.hpp	/^  inline static handle<> apply(const MatrixType &m)$/;"	f	struct:__anon2::realWrapper
+apply	src/wrapper/array.hpp	/^  inline static result_type *apply(const MatrixType &m)$/;"	f	struct:__anon2::conjugateWrapper
+array	src/cpp/pyublas/numpy.hpp	/^      numpy_array<T> &array()$/;"	f	class:pyublas::numpy_strided_vector
+array	src/cpp/pyublas/numpy.hpp	/^      numpy_array<T> &array()$/;"	f	class:pyublas::numpy_vector
+array	src/cpp/pyublas/numpy.hpp	/^      numpy_array<T> const &array() const$/;"	f	class:pyublas::numpy_strided_vector
+array	src/cpp/pyublas/numpy.hpp	/^      numpy_array<T> const &array() const$/;"	f	class:pyublas::numpy_vector
+array_converter_base	src/wrapper/converters.cpp	/^  struct array_converter_base$/;"	s	namespace:__anon3	file:
+as_strided	src/cpp/pyublas/numpy.hpp	/^        as_strided() const$/;"	f	class:pyublas::numpy_vector
+as_strided	src/cpp/pyublas/numpy.hpp	/^      numpy_strided_vector<T> as_strided()$/;"	f	class:pyublas::numpy_vector
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      const super &as_ublas() const$/;"	f	class:pyublas::numpy_matrix
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      const super &as_ublas() const$/;"	f	class:pyublas::numpy_strided_vector
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      const super &as_ublas() const$/;"	f	class:pyublas::numpy_vector
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      super &as_ublas() $/;"	f	class:pyublas::numpy_matrix
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      super &as_ublas() $/;"	f	class:pyublas::numpy_strided_vector
+as_ublas	src/cpp/pyublas/numpy.hpp	/^      super &as_ublas() $/;"	f	class:pyublas::numpy_vector
+asarray	src/python/__init__.py	/^    def asarray(data, dtype=None, flavor=None):$/;"	f	function:_add_python_methods
+assign_temporary	src/cpp/pyublas/numpy.hpp	/^      numpy_array &assign_temporary(numpy_array &a) $/;"	f	class:pyublas::numpy_array
+begin	src/cpp/pyublas/generic_ublas.hpp	/^  matrix_iterator<MatrixType> begin(MatrixType &mat)$/;"	f	namespace:pyublas
+begin	src/cpp/pyublas/numpy.hpp	/^      const_iterator begin() const $/;"	f	class:pyublas::numpy_array
+begin	src/cpp/pyublas/numpy.hpp	/^      iterator begin() $/;"	f	class:pyublas::numpy_array
+begin_tag	src/cpp/pyublas/generic_ublas.hpp	/^    class begin_tag { };$/;"	c	namespace:pyublas::detail
+binary_op	src/cpp/pyublas/elementwise_op.hpp	/^  struct binary_op$/;"	s	namespace:pyublas
+binary_ops	src/cpp/pyublas/elementwise_op.hpp	/^  namespace binary_ops$/;"	n	namespace:pyublas
+bindings	src/cpp/pyublas/numpy.hpp	/^namespace boost { namespace numeric { namespace bindings { namespace traits {$/;"	n	namespace:boost::numeric
+boost	src/cpp/pyublas/numpy.hpp	/^namespace boost { namespace numeric { namespace bindings { namespace traits {$/;"	n
+by_value_ro_member	src/cpp/pyublas/numpy.hpp	/^  by_value_ro_member_visitor<T, C> by_value_ro_member($/;"	f	namespace:pyublas
+by_value_ro_member_visitor	src/cpp/pyublas/numpy.hpp	/^      by_value_ro_member_visitor(const char *name, T C::*member, const char *doc = 0)$/;"	f	class:pyublas::by_value_ro_member_visitor
+by_value_ro_member_visitor	src/cpp/pyublas/numpy.hpp	/^  class by_value_ro_member_visitor $/;"	c	namespace:pyublas
+by_value_rw_member	src/cpp/pyublas/numpy.hpp	/^  by_value_rw_member_visitor<T, C> by_value_rw_member($/;"	f	namespace:pyublas
+by_value_rw_member_visitor	src/cpp/pyublas/numpy.hpp	/^      by_value_rw_member_visitor(const char *name, T C::*member, const char *doc = 0)$/;"	f	class:pyublas::by_value_rw_member_visitor
+by_value_rw_member_visitor	src/cpp/pyublas/numpy.hpp	/^  class by_value_rw_member_visitor $/;"	c	namespace:pyublas
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type { $/;"	s
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type<ublas::compressed_matrix<OLD, F, IB, IA>, NEW>$/;"	s
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type<ublas::coordinate_matrix<OLD, F, IB, IA>, NEW>$/;"	s
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type<ublas::matrix<OldValueType>, NewValueType>$/;"	s
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type<ublas::unbounded_array<OLD>, NEW>$/;"	s
+change_value_type	src/wrapper/meta.hpp	/^struct change_value_type<ublas::vector<OldValueType>, NewValueType>$/;"	s
+check	src/wrapper/converters.cpp	/^      static void *check(PyObject* obj)$/;"	f	struct:__anon3::matrix_converter
+check	src/wrapper/converters.cpp	/^      static void *check(PyObject* obj)$/;"	f	struct:__anon3::vector_converter
+check_array_scalar	src/wrapper/converters.cpp	/^  void *check_array_scalar(PyObject *obj)$/;"	f	namespace:__anon3
+check_invalid_ok	src/wrapper/converters.cpp	/^      static void *check_invalid_ok(PyObject* obj)$/;"	f	struct:__anon3::matrix_converter
+check_invalid_ok	src/wrapper/converters.cpp	/^      static void *check_invalid_ok(PyObject* obj)$/;"	f	struct:__anon3::vector_converter
+complexify	src/wrapper/helpers.hpp	/^struct complexify$/;"	s	namespace:helpers
+complexify	src/wrapper/helpers.hpp	/^struct complexify<std::complex<ELT> >$/;"	s	namespace:helpers
+conjugate	src/wrapper/helpers.hpp	/^inline T conjugate(const T &x)$/;"	f	namespace:helpers
+conjugate	src/wrapper/helpers.hpp	/^inline std::complex<T2> conjugate(const std::complex<T2> &x)$/;"	f	namespace:helpers
+conjugateWrapper	src/wrapper/array.hpp	/^struct conjugateWrapper$/;"	s	namespace:__anon2
+conjugate_if	src/wrapper/helpers.hpp	/^inline T conjugate_if(bool do_it, const T &x)$/;"	f	namespace:helpers
+conjugate_if	src/wrapper/helpers.hpp	/^inline std::complex<T2> conjugate_if(bool do_it, const std::complex<T2> &x)$/;"	f	namespace:helpers
+const_iterator	src/cpp/pyublas/numpy.hpp	/^      typedef const_pointer const_iterator;$/;"	t	class:pyublas::numpy_array
+const_pointer	src/cpp/pyublas/numpy.hpp	/^      typedef const T *const_pointer;$/;"	t	class:pyublas::numpy_array
+const_reference	src/cpp/pyublas/numpy.hpp	/^      typedef const T &const_reference;$/;"	t	class:pyublas::numpy_array
+const_reverse_iterator	src/cpp/pyublas/numpy.hpp	/^      typedef std::reverse_iterator<const_iterator> const_reverse_iterator;$/;"	t	class:pyublas::numpy_array
+construct	src/wrapper/converters.cpp	/^    static void construct($/;"	f	struct:__anon3::array_converter_base
+construct_indirect	src/wrapper/converters.cpp	/^      static void construct_indirect($/;"	f	struct:__anon3::vector_converter
+construct_indirect	src/wrapper/converters.cpp	/^    static void construct_indirect($/;"	f	struct:__anon3::array_converter_base
+construct_invalid_ok	src/wrapper/converters.cpp	/^    static void construct_invalid_ok($/;"	f	struct:__anon3::array_converter_base
+construct_strided	src/wrapper/converters.cpp	/^      static void construct_strided($/;"	f	struct:__anon3::vector_converter
+contained_type	src/cpp/pyublas/numpy.hpp	/^      typedef Contained contained_type;$/;"	t	class:pyublas::invalid_ok
+convert	src/wrapper/converters.cpp	/^      static PyObject* convert(OriginalType const &v)$/;"	f	struct:__anon3::array_converter_base::indirect_to_python
+convert	src/wrapper/converters.cpp	/^      static PyObject* convert(target_type const &v)$/;"	f	struct:__anon3::array_converter_base::to_python
+convert_array_scalar	src/wrapper/converters.cpp	/^  static void convert_array_scalar($/;"	f	namespace:__anon3	file:
+copyNew	src/wrapper/array.hpp	/^inline MatrixType *copyNew(const MatrixType &m)$/;"	f	namespace:__anon2
+data	src/cpp/pyublas/numpy.hpp	/^      T *data()$/;"	f	class:pyublas::numpy_array
+data	src/cpp/pyublas/numpy.hpp	/^      const T *data() const$/;"	f	class:pyublas::numpy_array
+decomplexify	src/wrapper/helpers.hpp	/^struct decomplexify$/;"	s	namespace:helpers
+decomplexify	src/wrapper/helpers.hpp	/^struct decomplexify<std::complex<ELT> >$/;"	s	namespace:helpers
+dereference	src/cpp/pyublas/generic_ublas.hpp	/^    typename it2_t::reference dereference() const $/;"	f	class:pyublas::matrix_iterator
+detail	src/cpp/pyublas/generic_ublas.hpp	/^  namespace detail$/;"	n	namespace:pyublas
+detail	src/cpp/pyublas/numpy.hpp	/^  namespace detail$/;"	n	namespace:pyublas
+difference_type	src/cpp/pyublas/numpy.hpp	/^      typedef std::ptrdiff_t difference_type;$/;"	t	class:pyublas::numpy_array
+dim	src/cpp/pyublas/numpy.hpp	/^      const npy_intp dim(npy_intp i) const $/;"	f	class:pyublas::numpy_array
+dim	src/cpp/pyublas/numpy.hpp	/^      const npy_intp dim(npy_intp i) const $/;"	f	struct:pyublas::detail::vector_functionality
+dims	src/cpp/pyublas/numpy.hpp	/^      const npy_intp *dims() const $/;"	f	class:pyublas::numpy_array
+dims	src/cpp/pyublas/numpy.hpp	/^      const npy_intp *dims() const $/;"	f	struct:pyublas::detail::vector_functionality
+doublify	src/test/test_ext.cpp	/^T doublify(T x)$/;"	f
+doublify_inplace	src/test/test_ext.cpp	/^void doublify_inplace(T x)$/;"	f
+doublify_keep_shape_1	src/test/test_ext.cpp	/^numpy_vector<T> doublify_keep_shape_1(numpy_vector<T> x)$/;"	f
+doublify_keep_shape_2	src/test/test_ext.cpp	/^numpy_vector<T> doublify_keep_shape_2(numpy_vector<T> x)$/;"	f
+doublify_numpy_strided_vector_inplace	src/test/test_ext.cpp	/^void doublify_numpy_strided_vector_inplace(numpy_strided_vector<T> x)$/;"	f
+doublify_numpy_vector_inplace	src/test/test_ext.cpp	/^void doublify_numpy_vector_inplace(numpy_vector<T> x)$/;"	f
+doublify_strided	src/test/test_ext.cpp	/^numpy_vector<T> doublify_strided(numpy_strided_vector<T> x)$/;"	f
+end	src/cpp/pyublas/generic_ublas.hpp	/^  matrix_iterator<MatrixType> end(MatrixType &mat)$/;"	f	namespace:pyublas
+end	src/cpp/pyublas/numpy.hpp	/^      const_iterator end() const $/;"	f	class:pyublas::numpy_array
+end	src/cpp/pyublas/numpy.hpp	/^      iterator end() $/;"	f	class:pyublas::numpy_array
+end_tag	src/cpp/pyublas/generic_ublas.hpp	/^    class end_tag { };$/;"	c	namespace:pyublas::detail
+equal	src/cpp/pyublas/generic_ublas.hpp	/^    bool equal(matrix_iterator const& other) const$/;"	f	class:pyublas::matrix_iterator
+etest_array_scalars	src/python/test.py	/^    def etest_array_scalars(self):$/;"	m	class:TestMatrices
+expose	src/wrapper/array.hpp	/^  void expose(const std::string &python_mattype, MatrixType) const$/;"	f	struct:__anon2::matrix_converter_exposer
+exposeAll	src/wrapper/sparse_build.cpp	/^static void exposeAll(ValueType, const std::string &python_eltypename)$/;"	f	file:
+exposeAll	src/wrapper/sparse_execute.cpp	/^static void exposeAll(ValueType, const std::string &python_eltypename)$/;"	f	file:
+exposeElementWiseBehavior	src/wrapper/array.hpp	/^void exposeElementWiseBehavior(PythonClass &pyclass, WrappedClass)$/;"	f	namespace:__anon2
+exposeForAllMatrices	src/wrapper/meta.hpp	/^static void exposeForAllMatrices(const Exposer &exposer)$/;"	f
+exposeForAllMatrices	src/wrapper/meta.hpp	/^static void exposeForAllMatrices(const Exposer &exposer, T)$/;"	f
+exposeForAllMatrices	src/wrapper/meta.hpp	/^static void exposeForAllMatrices(const Exposer &exposer, std::complex<T>)$/;"	f
+exposeForAllSimpleTypes	src/wrapper/meta.hpp	/^static void exposeForAllSimpleTypes(const std::string &python_eltname, const Exposer &exposer, ValueType)$/;"	f
+exposeForMatricesConvertibleTo	src/wrapper/meta.hpp	/^static void exposeForMatricesConvertibleTo(const Exposer &exposer, T)$/;"	f
+exposeForMatricesConvertibleTo	src/wrapper/meta.hpp	/^static void exposeForMatricesConvertibleTo(const Exposer &exposer, std::complex<T>)$/;"	f
+exposeMatrixConcept	src/wrapper/array.hpp	/^void exposeMatrixConcept(PythonClass &pyclass, WrappedClass)$/;"	f	namespace:__anon2
+exposePickling	src/wrapper/array.hpp	/^void exposePickling(PythonClass &pyclass, WrappedClass)$/;"	f	namespace:__anon2
+expose_add_scattered	src/wrapper/array.hpp	/^void expose_add_scattered(PythonClass &pyclass)$/;"	f	namespace:__anon2
+expose_converters	src/wrapper/converters.cpp	/^  void expose_converters()$/;"	f	namespace:__anon3
+expose_iterator	src/wrapper/array.hpp	/^void expose_iterator(PythonClass &pyclass, const std::string &python_typename, WrappedClass)$/;"	f	namespace:__anon2
+expose_matrix_specialties	src/wrapper/array.hpp	/^void expose_matrix_specialties(PYC &pyclass, ublas::compressed_matrix<VT, L, IB, IA, TA>)$/;"	f	namespace:__anon2
+expose_matrix_specialties	src/wrapper/array.hpp	/^void expose_matrix_specialties(PYC &pyclass, ublas::coordinate_matrix<VT, L, IB, IA, TA>)$/;"	f	namespace:__anon2
+expose_matrix_specialties	src/wrapper/array.hpp	/^void expose_matrix_specialties(PYC, MT)$/;"	f	namespace:__anon2
+expose_matrix_type	src/wrapper/array.hpp	/^void expose_matrix_type(WrappedClass, const std::string &python_typename, const std::string &python_eltypename)$/;"	f	namespace:__anon2
+fabs	src/cpp/pyublas/elementwise_op.hpp	/^    class fabs : public boost::numeric::ublas::scalar_real_unary_functor<double>$/;"	c	namespace:pyublas::unary_ops
+func	src/cpp/pyublas/numpy.hpp	/^        func;$/;"	t	class:pyublas::numpy_vector
+getElement	src/wrapper/array.hpp	/^handle<> getElement(\/*const*\/ MatrixType &m, handle<> index)$/;"	f	namespace:__anon2
+getLength	src/wrapper/array.hpp	/^inline unsigned getLength(const MatrixType &m)$/;"	f	namespace:__anon2
+getMinilist	src/wrapper/array.hpp	/^pyublas::minilist<T> getMinilist(const python::object &tup)$/;"	f	namespace:__anon2
+getPythonIndexTuple	src/wrapper/array.hpp	/^python::object getPythonIndexTuple(const pyublas::minilist<T> &ml)$/;"	f	namespace:__anon2
+getPythonShapeTuple	src/wrapper/array.hpp	/^python::tuple getPythonShapeTuple(const pyublas::minilist<T> &ml)$/;"	f	namespace:__anon2
+getShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline minilist<unsigned> getShape(const MatrixType &mat, boost::mpl::false_)$/;"	f	namespace:pyublas::detail
+getShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline minilist<unsigned> getShape(const MatrixType &mat, boost::mpl::true_)$/;"	f	namespace:pyublas::detail
+getShape	src/cpp/pyublas/generic_ublas.hpp	/^  inline minilist<unsigned> getShape(const MatrixType &mat)$/;"	f	namespace:pyublas
+getShape	src/wrapper/array.hpp	/^inline python::object getShape(const MatrixType &m)$/;"	f	namespace:__anon2
+get_PyArray_Type	src/wrapper/converters.cpp	/^  const PyTypeObject *get_PyArray_Type()$/;"	f	namespace:__anon3
+get_array_scalar_typeobj	src/wrapper/converters.cpp	/^  const PyTypeObject *get_array_scalar_typeobj()$/;"	f	namespace:__anon3
+get_array_size1	src/cpp/pyublas/numpy.hpp	/^  typename numpy_array<T>::size_type get_array_size1(numpy_array<T> const &ary)$/;"	f	namespace:pyublas
+get_array_size2	src/cpp/pyublas/numpy.hpp	/^  typename numpy_array<T>::size_type get_array_size2(numpy_array<T> const &ary)$/;"	f	namespace:pyublas
+get_biggest_type	src/python/__init__.py	/^        def get_biggest_type(mapping, prev_biggest_type=float):$/;"	f	function:_add_python_methods/sparse
+get_name	src/python/__init__.py	/^    def get_name(self):$/;"	m	class:ParameterizedType
+get_returner	src/python/__init__.py	/^    def get_returner(value):$/;"	f	function:_add_python_methods
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(bool) { return NPY_BOOL; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(boost::python::handle<>) { return NPY_OBJECT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(boost::python::object) { return NPY_OBJECT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_bool) { return NPY_BOOL; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_byte) { return NPY_BYTE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_cdouble) { return NPY_CDOUBLE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_cfloat) { return NPY_CFLOAT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_clongdouble) { return NPY_CLONGDOUBLE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_double) { return NPY_DOUBLE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_float) { return NPY_FLOAT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_int) { return NPY_INT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_long) { return NPY_LONG; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_longdouble) { return NPY_LONGDOUBLE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_longlong) { return NPY_LONGLONG; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_short) { return NPY_SHORT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_uint) { return NPY_UINT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_ulong) { return NPY_ULONG; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_ulonglong) { return NPY_ULONGLONG; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(npy_ushort) { return NPY_USHORT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(std::complex<double>) { return NPY_CDOUBLE; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(std::complex<float>) { return NPY_CFLOAT; }$/;"	f	namespace:pyublas
+get_typenum	src/cpp/pyublas/numpy.hpp	/^  inline NPY_TYPES get_typenum(std::complex<long double>) { return NPY_CLONGDOUBLE; }$/;"	f	namespace:pyublas
+getinitargs	src/wrapper/array.hpp	/^  getinitargs(const MatrixType &m)$/;"	f	struct:__anon2::sparse_pickle_suite
+getstate	src/wrapper/array.hpp	/^  getstate(MatrixType &m)$/;"	f	struct:__anon2::sparse_pickle_suite
+handle	src/cpp/pyublas/numpy.hpp	/^      const boost::python::handle<> handle() const$/;"	f	class:pyublas::numpy_array
+handle_from_existing_ptr	src/cpp/pyublas/python_helpers.hpp	/^  inline boost::python::handle<> handle_from_existing_ptr(T *ptr)$/;"	f	namespace:pyublas
+handle_from_existing_ref	src/cpp/pyublas/python_helpers.hpp	/^  inline boost::python::handle<> handle_from_existing_ref(T &ptr)$/;"	f	namespace:pyublas
+handle_from_new_ptr	src/cpp/pyublas/python_helpers.hpp	/^  inline boost::python::handle<> handle_from_new_ptr(T *ptr)$/;"	f	namespace:pyublas
+handle_from_object	src/cpp/pyublas/python_helpers.hpp	/^  inline boost::python::handle<> handle_from_object(const boost::python::object &obj)$/;"	f	namespace:pyublas
+handle_from_rvalue	src/cpp/pyublas/python_helpers.hpp	/^  inline boost::python::handle<> handle_from_rvalue(const T &val)$/;"	f	namespace:pyublas
+has_sparse_wrappers	src/wrapper/main.cpp	/^  bool has_sparse_wrappers()$/;"	f	namespace:__anon4
+helpers	src/wrapper/helpers.hpp	/^namespace helpers {$/;"	n
+hermite_matrix	src/wrapper/array.hpp	/^handle<> hermite_matrix(const MatrixType &m)$/;"	f	namespace:__anon2
+identifier_type	src/cpp/pyublas/numpy.hpp	/^    typedef pyublas::numpy_array<T>                      identifier_type; $/;"	t	struct:boost::numeric::bindings::traits::vector_detail_traits
+imagWrapper	src/wrapper/array.hpp	/^struct imagWrapper$/;"	s	namespace:__anon2
+increment	src/cpp/pyublas/generic_ublas.hpp	/^    void increment() $/;"	f	class:pyublas::matrix_iterator
+index	src/cpp/pyublas/generic_ublas.hpp	/^    minilist<typename MatrixType::size_type> index() const$/;"	f	class:pyublas::matrix_iterator
+index	src/cpp/pyublas/generic_ublas.hpp	/^    minilist<unsigned> index() const$/;"	f	class:pyublas::matrix_iterator
+indirect_to_python	src/wrapper/converters.cpp	/^    struct indirect_to_python$/;"	s	struct:__anon3::array_converter_base	file:
+insertElementWrapper	src/wrapper/array.hpp	/^void insertElementWrapper(MatrixType &m, $/;"	f	namespace:__anon2
+insert_element	src/cpp/pyublas/generic_ublas.hpp	/^    inline void insert_element($/;"	f	namespace:pyublas::detail
+insert_element	src/cpp/pyublas/generic_ublas.hpp	/^  inline void insert_element($/;"	f	namespace:pyublas
+invalid_ok	src/cpp/pyublas/numpy.hpp	/^      invalid_ok(Contained c)$/;"	f	class:pyublas::invalid_ok
+invalid_ok	src/cpp/pyublas/numpy.hpp	/^  class invalid_ok$/;"	c	namespace:pyublas
+isComplex	src/wrapper/helpers.hpp	/^inline bool isComplex(const T &)$/;"	f	namespace:helpers
+isComplex	src/wrapper/helpers.hpp	/^inline bool isComplex(const std::complex<T2> &)$/;"	f	namespace:helpers
+is_a	src/python/__init__.py	/^    def is_a(self, object):$/;"	m	class:ParameterizedType
+is_row_major	src/cpp/pyublas/numpy.hpp	/^  inline bool is_row_major(boost::numeric::ublas::column_major_tag)$/;"	f	namespace:pyublas
+is_row_major	src/cpp/pyublas/numpy.hpp	/^  inline bool is_row_major(boost::numeric::ublas::row_major_tag)$/;"	f	namespace:pyublas
+is_storage_compatible	src/cpp/pyublas/numpy.hpp	/^  bool is_storage_compatible(PyObject *ary)$/;"	f	namespace:pyublas
+is_valid	src/cpp/pyublas/numpy.hpp	/^      bool is_valid() const $/;"	f	struct:pyublas::detail::vector_functionality
+is_valid	src/cpp/pyublas/numpy.hpp	/^      bool is_valid() const$/;"	f	class:pyublas::numpy_array
+is_valid	src/cpp/pyublas/numpy.hpp	/^      bool is_valid() const$/;"	f	class:pyublas::numpy_matrix
+is_vector	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector { typedef boost::mpl::false_ type; };$/;"	s	namespace:pyublas
+is_vector	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::matrix_column<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	s	namespace:pyublas
+is_vector	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::matrix_row<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	s	namespace:pyublas
+is_vector	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::vector<ValueType, L> > { typedef boost::mpl::true_ type; };$/;"	s	namespace:pyublas
+is_vector	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::vector_slice<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	s	namespace:pyublas
+it1_t	src/cpp/pyublas/generic_ublas.hpp	/^      >::type it1_t;$/;"	t	class:pyublas::matrix_iterator
+it2_t	src/cpp/pyublas/generic_ublas.hpp	/^      >::type it2_t;$/;"	t	class:pyublas::matrix_iterator
+itemsize	src/cpp/pyublas/numpy.hpp	/^      npy_intp itemsize() const$/;"	f	class:pyublas::numpy_array
+itemsize	src/cpp/pyublas/numpy.hpp	/^      npy_intp itemsize() const$/;"	f	struct:pyublas::detail::vector_functionality
+iter	src/wrapper/array.hpp	/^  python_matrix_key_iterator *iter()$/;"	f	struct:__anon2::python_matrix_key_iterator
+iter	src/wrapper/array.hpp	/^  python_matrix_value_iterator *iter()$/;"	f	struct:__anon2::python_matrix_value_iterator
+iterator	src/cpp/pyublas/numpy.hpp	/^      typedef pointer iterator;$/;"	t	class:pyublas::numpy_array
+m_contained	src/cpp/pyublas/numpy.hpp	/^      Contained m_contained;$/;"	m	class:pyublas::invalid_ok
+m_doc	src/cpp/pyublas/numpy.hpp	/^      const char *m_doc;$/;"	m	class:pyublas::by_value_ro_member_visitor
+m_doc	src/cpp/pyublas/numpy.hpp	/^      const char *m_doc;$/;"	m	class:pyublas::by_value_rw_member_visitor
+m_end	src/wrapper/array.hpp	/^  Py_ssize_t m_end;$/;"	m	struct:__anon2::slice_info
+m_end	src/wrapper/array.hpp	/^  typename pyublas::matrix_iterator<MatrixType> m_iterator, m_end;$/;"	m	struct:__anon2::python_matrix_key_iterator
+m_it1	src/cpp/pyublas/generic_ublas.hpp	/^    it1_t       m_it1;$/;"	m	class:pyublas::matrix_iterator
+m_it2	src/cpp/pyublas/generic_ublas.hpp	/^    it2_t       m_it2;$/;"	m	class:pyublas::matrix_iterator
+m_iterator	src/wrapper/array.hpp	/^  typename pyublas::matrix_iterator<MatrixType> m_iterator, m_end;$/;"	m	struct:__anon2::python_matrix_key_iterator
+m_length	src/wrapper/array.hpp	/^  Py_ssize_t m_length;$/;"	m	struct:__anon2::slice_info
+m_list	src/cpp/pyublas/generic_ublas.hpp	/^    ValueType m_list[MaxElements];$/;"	m	class:pyublas::minilist
+m_matrix	src/wrapper/array.hpp	/^  const MatrixType                      &m_matrix;$/;"	m	struct:__anon2::python_matrix_value_iterator
+m_member	src/cpp/pyublas/numpy.hpp	/^      T C::*m_member;$/;"	m	class:pyublas::by_value_ro_member_visitor::C
+m_member	src/cpp/pyublas/numpy.hpp	/^      T C::*m_member;$/;"	m	class:pyublas::by_value_rw_member_visitor::C
+m_name	src/cpp/pyublas/numpy.hpp	/^      const char *m_name;$/;"	m	class:pyublas::by_value_ro_member_visitor
+m_name	src/cpp/pyublas/numpy.hpp	/^      const char *m_name;$/;"	m	class:pyublas::by_value_rw_member_visitor
+m_numpy_array	src/cpp/pyublas/numpy.hpp	/^      boost::python::handle<>         m_numpy_array;$/;"	m	class:pyublas::numpy_array
+m_pyclass	src/wrapper/array.hpp	/^  PythonClass &m_pyclass;$/;"	m	struct:__anon2::matrix_converter_exposer
+m_row_index	src/wrapper/array.hpp	/^  typename MatrixType::size_type        m_row_index;$/;"	m	struct:__anon2::python_matrix_value_iterator
+m_size	src/cpp/pyublas/generic_ublas.hpp	/^    unsigned m_size;$/;"	m	class:pyublas::minilist
+m_start	src/wrapper/array.hpp	/^  Py_ssize_t m_start;$/;"	m	struct:__anon2::slice_info
+m_stride	src/wrapper/array.hpp	/^  Py_ssize_t m_stride;$/;"	m	struct:__anon2::slice_info
+m_vector	src/cpp/pyublas/numpy.hpp	/^        V m_vector;$/;"	m	class:pyublas::detail::vector_holder
+m_was_slice	src/wrapper/array.hpp	/^  bool m_was_slice;$/;"	m	struct:__anon2::slice_info
+make	src/python/__init__.py	/^    def make(self, dtype, *args, **kwargs):$/;"	m	class:ParameterizedType
+make_resized_vector	src/test/test_ext.cpp	/^numpy_vector<double> make_resized_vector(unsigned n)$/;"	f
+matrixSimpleAppendElement	src/wrapper/array.hpp	/^void matrixSimpleAppendElement(MatrixType &m, $/;"	f	namespace:__anon2
+matrixSimplePushBack	src/wrapper/array.hpp	/^void matrixSimplePushBack(MatrixType &m, $/;"	f	namespace:__anon2
+matrix_converter	src/wrapper/converters.cpp	/^  struct matrix_converter : public array_converter_base<MatrixType>$/;"	s	namespace:__anon3	file:
+matrix_converter_exposer	src/wrapper/array.hpp	/^  matrix_converter_exposer(PythonClass &pyclass)$/;"	f	struct:__anon2::matrix_converter_exposer
+matrix_converter_exposer	src/wrapper/array.hpp	/^struct matrix_converter_exposer$/;"	s	namespace:__anon2
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^    matrix_iterator() { }$/;"	f	class:pyublas::matrix_iterator
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^    matrix_iterator(MatrixType &mat, detail::begin_tag)$/;"	f	class:pyublas::matrix_iterator
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^    matrix_iterator(MatrixType &mat, detail::end_tag)$/;"	f	class:pyublas::matrix_iterator
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^    matrix_iterator(const typename MatrixType::iterator &it)$/;"	f	class:pyublas::matrix_iterator
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^  class matrix_iterator :  public boost::iterator_facade<$/;"	c	namespace:pyublas
+matrix_iterator	src/cpp/pyublas/generic_ublas.hpp	/^  class matrix_iterator<MatrixType, boost::mpl::true_> :  public boost::iterator_adaptor<$/;"	c	namespace:pyublas
+matrix_to_python	src/cpp/pyublas/numpy.hpp	/^  boost::python::handle<> matrix_to_python(numpy_matrix<T, L> const &mat)$/;"	f	namespace:pyublas
+max	src/cpp/pyublas/elementwise_op.hpp	/^    class max : public boost::numeric::ublas::scalar_binary_functor<T1, T2> $/;"	c	namespace:pyublas::binary_ops
+max_pos_stride_index	src/cpp/pyublas/numpy.hpp	/^      npy_intp max_pos_stride_index() const$/;"	f	class:pyublas::numpy_array
+min	src/cpp/pyublas/elementwise_op.hpp	/^    class min : public boost::numeric::ublas::scalar_binary_functor<T1, T2> $/;"	c	namespace:pyublas::binary_ops
+minilist	src/cpp/pyublas/generic_ublas.hpp	/^    minilist()$/;"	f	class:pyublas::minilist
+minilist	src/cpp/pyublas/generic_ublas.hpp	/^    minilist(const value_type &v0)$/;"	f	class:pyublas::minilist
+minilist	src/cpp/pyublas/generic_ublas.hpp	/^    minilist(const value_type &v0, const value_type &v1)$/;"	f	class:pyublas::minilist
+minilist	src/cpp/pyublas/generic_ublas.hpp	/^  class minilist$/;"	c	namespace:pyublas
+multiply_matrix	src/wrapper/array.hpp	/^handle<> multiply_matrix(const MatrixType &mat, python::object op2)$/;"	f	namespace:__anon2
+multiply_matrix_base	src/wrapper/array.hpp	/^handle<> multiply_matrix_base($/;"	f	namespace:__anon2
+multiply_matrix_inplace	src/wrapper/array.hpp	/^handle<> multiply_matrix_inplace(python::object op1, python::object op2)$/;"	f	namespace:__anon2
+ndim	src/cpp/pyublas/numpy.hpp	/^      size_type ndim() const $/;"	f	class:pyublas::numpy_array
+ndim	src/cpp/pyublas/numpy.hpp	/^      typename Super::size_type ndim() const $/;"	f	struct:pyublas::detail::vector_functionality
+newWithShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline MatrixType *newWithShape(const minilist<IdxType> &shape, boost::mpl::false_)$/;"	f	namespace:pyublas::detail
+newWithShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline MatrixType *newWithShape(const minilist<IdxType> &shape, boost::mpl::true_)$/;"	f	namespace:pyublas::detail
+newWithShape	src/cpp/pyublas/generic_ublas.hpp	/^  MatrixType *newWithShape(const minilist<IdxType> &shape)$/;"	f	namespace:pyublas
+next	src/wrapper/array.hpp	/^  handle<> next()$/;"	f	struct:__anon2::python_matrix_value_iterator
+next	src/wrapper/array.hpp	/^  python::object next()$/;"	f	struct:__anon2::python_matrix_key_iterator
+next	src/wrapper/array.hpp	/^  typename MatrixType::value_type next()$/;"	f	struct:__anon2::python_matrix_value_iterator
+numeric	src/cpp/pyublas/numpy.hpp	/^namespace boost { namespace numeric { namespace bindings { namespace traits {$/;"	n	namespace:boost
+numpy_array	src/cpp/pyublas/numpy.hpp	/^      numpy_array()$/;"	f	class:pyublas::numpy_array
+numpy_array	src/cpp/pyublas/numpy.hpp	/^      numpy_array(const boost::python::handle<> &obj)$/;"	f	class:pyublas::numpy_array
+numpy_array	src/cpp/pyublas/numpy.hpp	/^      numpy_array(int ndim_, const npy_intp *dims_)$/;"	f	class:pyublas::numpy_array
+numpy_array	src/cpp/pyublas/numpy.hpp	/^      numpy_array(size_type n)$/;"	f	class:pyublas::numpy_array
+numpy_array	src/cpp/pyublas/numpy.hpp	/^      numpy_array(size_type n, const value_type &v)$/;"	f	class:pyublas::numpy_array
+numpy_array	src/cpp/pyublas/numpy.hpp	/^  class numpy_array$/;"	c	namespace:pyublas
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^      numpy_matrix ()$/;"	f	class:pyublas::numpy_matrix
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^      numpy_matrix (const boost::numeric::ublas::matrix_expression<AE> &ae)$/;"	f	class:pyublas::numpy_matrix
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^      numpy_matrix($/;"	f	class:pyublas::numpy_matrix
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^      numpy_matrix(const numpy_matrix &m)$/;"	f	class:pyublas::numpy_matrix
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^      numpy_matrix(const typename super::array_type &data)$/;"	f	class:pyublas::numpy_matrix
+numpy_matrix	src/cpp/pyublas/numpy.hpp	/^  class numpy_matrix$/;"	c	namespace:pyublas
+numpy_strided_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_strided_vector(const boost::numeric::ublas::vector_expression<AE> &ae)$/;"	f	class:pyublas::numpy_strided_vector
+numpy_strided_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_strided_vector(const numpy_array<T> &s)$/;"	f	class:pyublas::numpy_strided_vector
+numpy_strided_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_strided_vector(const numpy_strided_vector &v)$/;"	f	class:pyublas::numpy_strided_vector
+numpy_strided_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_strided_vector(numpy_vector<T> &v, boost::numeric::ublas::slice const &s)$/;"	f	class:pyublas::numpy_strided_vector
+numpy_strided_vector	src/cpp/pyublas/numpy.hpp	/^  class numpy_strided_vector$/;"	c	namespace:pyublas
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^        numpy_vector(typename super::size_type size)$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector ($/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector ()$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector (const numpy_vector &v)$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector(const boost::numeric::ublas::vector_expression<AE> &ae)$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector(const numpy_array<T> &s)$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^      numpy_vector(int ndim_, const npy_intp *dims_)$/;"	f	class:pyublas::numpy_vector
+numpy_vector	src/cpp/pyublas/numpy.hpp	/^  class numpy_vector$/;"	c	namespace:pyublas
+obtain	src/wrapper/array.hpp	/^  static python_matrix_key_iterator *obtain(MatrixType &m)$/;"	f	struct:__anon2::python_matrix_key_iterator
+obtain	src/wrapper/array.hpp	/^  static python_matrix_value_iterator *obtain(MatrixType &m)$/;"	f	struct:__anon2::python_matrix_value_iterator
+operator ()	src/wrapper/helpers.hpp	/^  operator()($/;"	f	struct:helpers::reverse_binary_function
+operator *	src/cpp/pyublas/numpy.hpp	/^      Contained &operator*()$/;"	f	class:pyublas::invalid_ok
+operator *	src/cpp/pyublas/numpy.hpp	/^      const Contained &operator*() const$/;"	f	class:pyublas::invalid_ok
+operator ->	src/cpp/pyublas/numpy.hpp	/^      Contained *operator->()$/;"	f	class:pyublas::invalid_ok
+operator ->	src/cpp/pyublas/numpy.hpp	/^      const Contained *operator->() const$/;"	f	class:pyublas::invalid_ok
+operator =	src/cpp/pyublas/numpy.hpp	/^      numpy_array &operator=(const numpy_array &a) $/;"	f	class:pyublas::numpy_array
+operator []	src/cpp/pyublas/generic_ublas.hpp	/^    ValueType &operator[](size_type index)$/;"	f	class:pyublas::minilist
+operator []	src/cpp/pyublas/generic_ublas.hpp	/^    const ValueType &operator[](size_type index) const$/;"	f	class:pyublas::minilist
+operator []	src/cpp/pyublas/numpy.hpp	/^      const_reference operator [] (size_type i) const $/;"	f	class:pyublas::numpy_array
+operator []	src/cpp/pyublas/numpy.hpp	/^      reference operator [] (size_type i) $/;"	f	class:pyublas::numpy_array
+permutation_matrix	src/python/__init__.py	/^    def permutation_matrix(to_indices=None, from_indices=None, h=None, w=None,$/;"	f	function:_add_python_methods
+pointer	src/cpp/pyublas/numpy.hpp	/^      typedef T *pointer;$/;"	t	class:pyublas::numpy_array
+pointer	src/cpp/pyublas/numpy.hpp	/^    typedef typename default_vector_traits<V,T>::pointer pointer;$/;"	t	struct:boost::numeric::bindings::traits::vector_detail_traits
+push_back	src/cpp/pyublas/generic_ublas.hpp	/^    void push_back(const value_type &v)$/;"	f	class:pyublas::minilist
+pyobject_from_new_ptr	src/cpp/pyublas/python_helpers.hpp	/^  inline PyObject *pyobject_from_new_ptr(T *ptr)$/;"	f	namespace:pyublas
+python_matrix_key_iterator	src/wrapper/array.hpp	/^struct python_matrix_key_iterator$/;"	s	namespace:__anon2
+python_matrix_value_iterator	src/wrapper/array.hpp	/^  python_matrix_value_iterator(const MatrixType &matrix)$/;"	f	struct:__anon2::python_matrix_value_iterator
+python_matrix_value_iterator	src/wrapper/array.hpp	/^struct python_matrix_value_iterator$/;"	s	namespace:__anon2
+python_matrix_value_iterator	src/wrapper/array.hpp	/^struct python_matrix_value_iterator<MatrixType, mpl::true_>$/;"	s	namespace:__anon2
+pyublas	src/cpp/pyublas/elementwise_op.hpp	/^namespace pyublas {$/;"	n
+pyublas	src/cpp/pyublas/generic_ublas.hpp	/^namespace pyublas {$/;"	n
+pyublas	src/cpp/pyublas/numpy.hpp	/^namespace pyublas$/;"	n
+pyublas	src/cpp/pyublas/python_helpers.hpp	/^namespace pyublas$/;"	n
+pyublas_expose_converters	src/wrapper/converters.cpp	/^void pyublas_expose_converters()$/;"	f
+pyublas_expose_sparse_build	src/wrapper/sparse_build.cpp	/^void pyublas_expose_sparse_build()$/;"	f
+pyublas_expose_sparse_execute	src/wrapper/sparse_execute.cpp	/^void pyublas_expose_sparse_execute()$/;"	f
+rbegin	src/cpp/pyublas/numpy.hpp	/^      const_reverse_iterator rbegin() const $/;"	f	class:pyublas::numpy_array
+rbegin	src/cpp/pyublas/numpy.hpp	/^      reverse_iterator rbegin() $/;"	f	class:pyublas::numpy_array
+realWrapper	src/wrapper/array.hpp	/^struct realWrapper$/;"	s	namespace:__anon2
+real_type	src/cpp/pyublas/elementwise_op.hpp	/^      typedef typename super::real_type real_type;$/;"	t	struct:pyublas::vector_square_sum
+reference	src/cpp/pyublas/numpy.hpp	/^      typedef T &reference;$/;"	t	class:pyublas::numpy_array
+register_array_converter	src/wrapper/converters.cpp	/^  void register_array_converter()$/;"	f	namespace:__anon3
+register_indirect_array_converter	src/wrapper/converters.cpp	/^  void register_indirect_array_converter()$/;"	f	namespace:__anon3
+register_vector_converter	src/wrapper/converters.cpp	/^  void register_vector_converter()$/;"	f	namespace:__anon3
+rend	src/cpp/pyublas/numpy.hpp	/^      const_reverse_iterator rend() const $/;"	f	class:pyublas::numpy_array
+rend	src/cpp/pyublas/numpy.hpp	/^      reverse_iterator rend () $/;"	f	class:pyublas::numpy_array
+reshape	src/cpp/pyublas/numpy.hpp	/^      void reshape(int ndim_, const npy_intp *dims_, $/;"	f	class:pyublas::numpy_array
+reshape	src/cpp/pyublas/numpy.hpp	/^      void reshape(int ndim_, const npy_intp *dims_, NPY_ORDER order=NPY_CORDER)$/;"	f	struct:pyublas::detail::vector_functionality
+resize	src/cpp/pyublas/numpy.hpp	/^      void resize (size_type size) $/;"	f	class:pyublas::numpy_array
+resize	src/cpp/pyublas/numpy.hpp	/^      void resize (size_type size, value_type init) $/;"	f	class:pyublas::numpy_array
+resize_internal	src/cpp/pyublas/numpy.hpp	/^      void resize_internal (size_type new_size, value_type init, bool preserve = true) $/;"	f	class:pyublas::numpy_array
+result_type	src/cpp/pyublas/elementwise_op.hpp	/^      typedef typename super::result_type result_type;$/;"	t	struct:pyublas::vector_square_sum
+result_type	src/wrapper/array.hpp	/^    result_type;$/;"	t	struct:__anon2::imagWrapper
+result_type	src/wrapper/array.hpp	/^    result_type;$/;"	t	struct:__anon2::realWrapper
+result_type	src/wrapper/array.hpp	/^  typedef MatrixType result_type;$/;"	t	struct:__anon2::conjugateWrapper
+reverse_binary_function	src/wrapper/helpers.hpp	/^struct reverse_binary_function : $/;"	s	namespace:helpers
+reverse_iterator	src/cpp/pyublas/numpy.hpp	/^      typedef std::reverse_iterator<iterator> reverse_iterator;$/;"	t	class:pyublas::numpy_array
+rmultiply_matrix	src/wrapper/array.hpp	/^handle<> rmultiply_matrix(const  MatrixType &mat, python::object op2)$/;"	f	namespace:__anon2
+set	src/cpp/pyublas/generic_ublas.hpp	/^    inline void set($/;"	f	namespace:pyublas::detail
+set	src/cpp/pyublas/generic_ublas.hpp	/^  inline void set($/;"	f	namespace:pyublas
+setElement	src/wrapper/array.hpp	/^void setElement(MatrixType &m, handle<> index, python::object &new_value)$/;"	f	namespace:__anon2
+setShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline void setShape(MatrixType &mat, const minilist<IdxType> &shape, boost::mpl::false_)$/;"	f	namespace:pyublas::detail
+setShape	src/cpp/pyublas/generic_ublas.hpp	/^    inline void setShape(MatrixType &mat, const minilist<IdxType> &shape, boost::mpl::true_)$/;"	f	namespace:pyublas::detail
+setShape	src/cpp/pyublas/generic_ublas.hpp	/^  inline void setShape(MatrixType &mat, const minilist<IdxType> &shape)$/;"	f	namespace:pyublas
+setShape	src/wrapper/array.hpp	/^inline void setShape(MatrixType &m, const python::tuple &new_shape)$/;"	f	namespace:__anon2
+setstate	src/wrapper/array.hpp	/^  setstate(MatrixType &m, python::object entries)$/;"	f	struct:__anon2::sparse_pickle_suite
+size	src/cpp/pyublas/generic_ublas.hpp	/^    size_type size() const$/;"	f	class:pyublas::minilist
+size	src/cpp/pyublas/numpy.hpp	/^      size_type size() const $/;"	f	class:pyublas::numpy_array
+size_from_dims	src/cpp/pyublas/numpy.hpp	/^  npy_intp size_from_dims(int ndim, const npy_intp *dims)$/;"	f	namespace:pyublas
+size_type	src/cpp/pyublas/generic_ublas.hpp	/^    typedef unsigned size_type;$/;"	t	class:pyublas::minilist
+size_type	src/cpp/pyublas/numpy.hpp	/^      typedef std::size_t size_type;$/;"	t	class:pyublas::numpy_array
+slice_info	src/wrapper/array.hpp	/^struct slice_info$/;"	s	namespace:__anon2
+sparse	src/python/__init__.py	/^    def sparse(mapping, shape=None, dtype=None, flavor=SparseBuildMatrix):$/;"	f	function:_add_python_methods
+sparse_pickle_suite	src/wrapper/array.hpp	/^struct sparse_pickle_suite : python::pickle_suite$/;"	s	namespace:__anon2
+square_sum	src/cpp/pyublas/elementwise_op.hpp	/^  square_sum(const boost::numeric::ublas::vector_expression<E> &e) $/;"	f	namespace:pyublas
+storage	src/cpp/pyublas/numpy.hpp	/^    static pointer storage (vector_type& v) { return v.data(); }$/;"	f	struct:boost::numeric::bindings::traits::vector_detail_traits
+stride	src/cpp/pyublas/numpy.hpp	/^      const npy_intp stride(npy_intp i) const $/;"	f	class:pyublas::numpy_array
+stride	src/cpp/pyublas/numpy.hpp	/^      const npy_intp stride(npy_intp i) const $/;"	f	struct:pyublas::detail::vector_functionality
+stride	src/cpp/pyublas/numpy.hpp	/^      npy_intp stride(npy_intp i) const$/;"	f	class:pyublas::numpy_strided_vector
+stride	src/cpp/pyublas/numpy.hpp	/^      typename super::size_type stride() const$/;"	f	class:pyublas::numpy_strided_vector
+stride_slice	src/cpp/pyublas/numpy.hpp	/^      boost::numeric::ublas::slice stride_slice() const$/;"	f	class:pyublas::numpy_vector
+strides	src/cpp/pyublas/numpy.hpp	/^      const npy_intp *strides() const $/;"	f	class:pyublas::numpy_array
+strides	src/cpp/pyublas/numpy.hpp	/^      const npy_intp *strides() const $/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      const typename Super::value_type &sub(npy_intp i) const$/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      const typename Super::value_type &sub(npy_intp i, npy_intp j) const$/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      const typename Super::value_type &sub(npy_intp i, npy_intp j, npy_intp k) const$/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      const typename Super::value_type &sub(npy_intp i, npy_intp j, npy_intp k, npy_intp l) const$/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      typename Super::value_type &sub(npy_intp i) $/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      typename Super::value_type &sub(npy_intp i, npy_intp j) $/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      typename Super::value_type &sub(npy_intp i, npy_intp j, npy_intp k) $/;"	f	struct:pyublas::detail::vector_functionality
+sub	src/cpp/pyublas/numpy.hpp	/^      typename Super::value_type &sub(npy_intp i, npy_intp j, npy_intp k, npy_intp l) $/;"	f	struct:pyublas::detail::vector_functionality
+sum	src/wrapper/array.hpp	/^sum(MatrixType &mat)$/;"	f	namespace:__anon2
+super	src/cpp/pyublas/elementwise_op.hpp	/^        typedef boost::numeric::ublas::scalar_binary_functor<T1, T2> super;$/;"	t	class:pyublas::binary_ops::max
+super	src/cpp/pyublas/elementwise_op.hpp	/^        typedef boost::numeric::ublas::scalar_binary_functor<T1, T2> super;$/;"	t	class:pyublas::binary_ops::min
+super	src/cpp/pyublas/elementwise_op.hpp	/^        typedef boost::numeric::ublas::scalar_unary_functor<double> super;$/;"	t	class:pyublas::unary_ops::fabs
+super	src/cpp/pyublas/elementwise_op.hpp	/^      typedef boost::numeric::ublas::vector_scalar_real_unary_functor<V> super;$/;"	t	struct:pyublas::vector_square_sum
+super	src/cpp/pyublas/generic_ublas.hpp	/^        super;$/;"	t	class:pyublas::matrix_iterator
+super	src/cpp/pyublas/numpy.hpp	/^        super;$/;"	t	class:pyublas::numpy_matrix
+super	src/cpp/pyublas/numpy.hpp	/^        super;$/;"	t	class:pyublas::numpy_strided_vector
+super	src/cpp/pyublas/numpy.hpp	/^        super;$/;"	t	class:pyublas::numpy_vector
+super	src/wrapper/converters.cpp	/^      typedef array_converter_base<MatrixType> super;$/;"	t	struct:__anon3::matrix_converter	file:
+super	src/wrapper/converters.cpp	/^      typedef array_converter_base<VectorType> super;$/;"	t	struct:__anon3::vector_converter	file:
+swap	src/cpp/pyublas/numpy.hpp	/^      friend void swap(numpy_array &a1, numpy_array &a2) $/;"	f	class:pyublas::numpy_array
+swap	src/cpp/pyublas/numpy.hpp	/^      void swap (numpy_array &a) $/;"	f	class:pyublas::numpy_array
+target_type	src/wrapper/converters.cpp	/^    typedef TargetType target_type;$/;"	t	struct:__anon3::array_converter_base	file:
+test_0d_array	src/python/test.py	/^    def test_0d_array(self):$/;"	m	class:TestMatrices
+test_2d	src/python/test.py	/^    def test_2d(self):$/;"	m	class:TestMatrices
+test_empty_and_resize	src/python/test.py	/^    def test_empty_and_resize(self):$/;"	m	class:TestMatrices
+test_matrix	src/python/test.py	/^    def test_matrix(self):$/;"	m	class:TestMatrices
+test_matrix_cm	src/python/test.py	/^    def test_matrix_cm(self):$/;"	m	class:TestMatrices
+test_matrix_slice	src/python/test.py	/^    def test_matrix_slice(self):$/;"	m	class:TestMatrices
+test_matrix_slice_cm	src/python/test.py	/^    def test_matrix_slice_cm(self):$/;"	m	class:TestMatrices
+test_matrix_slice_inplace	src/python/test.py	/^    def test_matrix_slice_inplace(self):$/;"	m	class:TestMatrices
+test_negative_stride	src/python/test.py	/^    def test_negative_stride(self):$/;"	m	class:TestMatrices
+test_no_2d_strided_vector	src/python/test.py	/^    def test_no_2d_strided_vector(self):$/;"	m	class:TestMatrices
+test_regular_vector	src/python/test.py	/^    def test_regular_vector(self):$/;"	m	class:TestMatrices
+test_strided_speed	src/test/test_ext.cpp	/^void test_strided_speed()$/;"	f
+test_ublas_speed	src/test/test_ext.cpp	/^void test_ublas_speed()$/;"	f
+test_unstrided_speed	src/test/test_ext.cpp	/^void test_unstrided_speed()$/;"	f
+test_vec_slice_contig_inplace	src/python/test.py	/^    def test_vec_slice_contig_inplace(self):$/;"	m	class:TestMatrices
+test_vec_slice_noncontig	src/python/test.py	/^    def test_vec_slice_noncontig(self):$/;"	m	class:TestMatrices
+test_vec_slice_noncontig_inplace	src/python/test.py	/^    def test_vec_slice_noncontig_inplace(self):$/;"	m	class:TestMatrices
+to_python	src/cpp/pyublas/numpy.hpp	/^      boost::python::handle<> to_python() const$/;"	f	class:pyublas::numpy_matrix
+to_python	src/cpp/pyublas/numpy.hpp	/^      boost::python::handle<> to_python() const$/;"	f	struct:pyublas::detail::vector_functionality
+to_python	src/wrapper/converters.cpp	/^    struct to_python$/;"	s	struct:__anon3::array_converter_base	file:
+traits	src/cpp/pyublas/numpy.hpp	/^namespace boost { namespace numeric { namespace bindings { namespace traits {$/;"	n	namespace:boost::numeric::bindings
+translateIndex	src/wrapper/array.hpp	/^void translateIndex(PyObject *slice_or_constant, slice_info &si, int my_length)$/;"	f	namespace:__anon2
+transpose_matrix	src/wrapper/array.hpp	/^handle<> transpose_matrix(const MatrixType &m)$/;"	f	namespace:__anon2
+type	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector { typedef boost::mpl::false_ type; };$/;"	t	struct:pyublas::is_vector
+type	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::matrix_column<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	t	struct:pyublas::is_vector
+type	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::matrix_row<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	t	struct:pyublas::is_vector
+type	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::vector<ValueType, L> > { typedef boost::mpl::true_ type; };$/;"	t	struct:pyublas::is_vector
+type	src/cpp/pyublas/generic_ublas.hpp	/^    struct is_vector<boost::numeric::ublas::vector_slice<WrappedVector> > { typedef boost::mpl::true_ type; };$/;"	t	struct:pyublas::is_vector
+type	src/wrapper/helpers.hpp	/^  typedef ELT type;$/;"	t	struct:helpers::decomplexify
+type	src/wrapper/helpers.hpp	/^  typedef T type;$/;"	t	struct:helpers::decomplexify
+type	src/wrapper/helpers.hpp	/^  typedef std::complex<ELT> type;$/;"	t	struct:helpers::complexify
+type	src/wrapper/helpers.hpp	/^  typedef std::complex<T> type;$/;"	t	struct:helpers::complexify
+type	src/wrapper/meta.hpp	/^{ typedef ublas::compressed_matrix<NEW, F, IB, IA> type; };$/;"	t	struct:change_value_type
+type	src/wrapper/meta.hpp	/^{ typedef ublas::coordinate_matrix<NEW, F, IB, IA> type; };$/;"	t	struct:change_value_type
+type	src/wrapper/meta.hpp	/^{ typedef ublas::matrix<NewValueType> type; };$/;"	t	struct:change_value_type
+type	src/wrapper/meta.hpp	/^{ typedef ublas::unbounded_array<NEW> type; };$/;"	t	struct:change_value_type
+type	src/wrapper/meta.hpp	/^{ typedef ublas::vector<NewValueType> type; };$/;"	t	struct:change_value_type
+unary_op	src/cpp/pyublas/elementwise_op.hpp	/^  struct unary_op$/;"	s	namespace:pyublas
+unary_ops	src/cpp/pyublas/elementwise_op.hpp	/^  namespace unary_ops$/;"	n	namespace:pyublas
+validate	src/cpp/pyublas/generic_ublas.hpp	/^    void validate()$/;"	f	class:pyublas::matrix_iterator
+value_type	src/cpp/pyublas/elementwise_op.hpp	/^      typedef typename super::value_type value_type;$/;"	t	struct:pyublas::vector_square_sum
+value_type	src/cpp/pyublas/generic_ublas.hpp	/^    typedef ValueType value_type;$/;"	t	class:pyublas::minilist
+value_type	src/cpp/pyublas/numpy.hpp	/^      typedef T value_type;$/;"	t	class:pyublas::numpy_array
+value_type	src/wrapper/converters.cpp	/^    typedef typename TargetType::value_type value_type;$/;"	t	struct:__anon3::array_converter_base	file:
+vector_converter	src/wrapper/converters.cpp	/^  struct vector_converter : public array_converter_base<VectorType>$/;"	s	namespace:__anon3	file:
+vector_detail_traits	src/cpp/pyublas/numpy.hpp	/^  struct vector_detail_traits< pyublas::numpy_array<T>, V > $/;"	s	namespace:boost::numeric::bindings::traits
+vector_functionality	src/cpp/pyublas/numpy.hpp	/^    struct vector_functionality$/;"	s	namespace:pyublas::detail
+vector_holder	src/cpp/pyublas/numpy.hpp	/^        vector_holder(const V &v)$/;"	f	class:pyublas::detail::vector_holder
+vector_holder	src/cpp/pyublas/numpy.hpp	/^        vector_holder;$/;"	t	class:pyublas::numpy_strided_vector
+vector_holder	src/cpp/pyublas/numpy.hpp	/^    class vector_holder$/;"	c	namespace:pyublas::detail
+vector_square_sum	src/cpp/pyublas/elementwise_op.hpp	/^  struct vector_square_sum : $/;"	s	namespace:pyublas
+vector_type	src/cpp/pyublas/numpy.hpp	/^    typedef V                                            vector_type;$/;"	t	struct:boost::numeric::bindings::traits::vector_detail_traits
+visit	src/cpp/pyublas/numpy.hpp	/^      void visit(Class& cl) const$/;"	f	class:pyublas::by_value_ro_member_visitor
+visit	src/cpp/pyublas/numpy.hpp	/^      void visit(Class& cl) const$/;"	f	class:pyublas::by_value_rw_member_visitor
+why_not	src/python/__init__.py	/^def why_not(val, dtype=float, matrix=False, row_major=True):$/;"	f
+wrapBinaryOp	src/wrapper/array.hpp	/^Array wrapBinaryOp(const Array &op1, const Array &op2)$/;"	f	namespace:__anon2
+wrapUnaryOp	src/wrapper/array.hpp	/^Array wrapUnaryOp(const Array &op)$/;"	f	namespace:__anon2
+writable	src/cpp/pyublas/numpy.hpp	/^      bool writable() const $/;"	f	struct:pyublas::detail::vector_functionality
+writable	src/cpp/pyublas/numpy.hpp	/^      bool writable() const$/;"	f	class:pyublas::numpy_array
+zeros	src/python/__init__.py	/^    def zeros(shape, dtype=float, flavor=SparseBuildMatrix):$/;"	f	function:_add_python_methods

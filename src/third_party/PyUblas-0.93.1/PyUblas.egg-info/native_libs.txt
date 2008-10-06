@@ -1,0 +1,2 @@
+pyublas/_internal.so
+pyublas/test_ext.so
