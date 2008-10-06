@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Tue Oct 07 12:00 AM 2008 CEST
+ *       Last Change: Tue Oct 07 01:00 AM 2008 CEST
  */
 
 #include <nana.h>
@@ -17,7 +17,7 @@ SDPRandWalkProbGen::SDPRandWalkProbGen(const AdjMatT&a)
 void SDPRandWalkProbGen::operator()(SDPProb& prob)
 {
 	using ublas::identity_matrix;
-	typedef AdjMatT Matrix ;
+	typedef SDPProb::MatT Matrix ;
 
 	I(mAdjMat.size1() == mAdjMat.size2());
 
