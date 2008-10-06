@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 07:45:51 PM
- *       Last Change: Sun Oct 05 10:00 PM 2008 CEST
+ *       Last Change: Mon Oct 06 11:00 PM 2008 CEST
  */
 
 #ifndef __RAND_WALK_GEN_HPP__
@@ -9,9 +9,10 @@
 
 class RandWalkGen{
 	public:
-		typedef std::pair<int, int>                   NodeRefT;
-		typedef std::vector<NodeRefT>                 RandWalkT;
-		typedef boost::numeric::ublas::matrix<double> AdjMatT;
+		typedef std::pair<int, int>                                NodeRefT;
+		typedef std::vector<NodeRefT>                              RandWalkT;
+		typedef boost::numeric::ublas::matrix<double,
+				boost::numeric::ublas::column_major>               AdjMatT;
 
 		virtual RandWalkT operator()(const AdjMatT&)=0;
 };

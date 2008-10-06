@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:23:53 AM
- *       Last Change: Mon Oct 06 12:00 AM 2008 CEST
+ *       Last Change: Tue Oct 07 12:00 AM 2008 CEST
  */
 
 #ifndef __SDP_RAND_WALK_PROB_GEN_HPP__
@@ -7,11 +7,10 @@
 #include <sdp_prob.hpp>
 class SDPRandWalkProbGen{
 	public:
-		typedef boost::numeric::ublas::matrix<double> AdjMatT;
-		typedef boost::numeric::ublas::matrix<double> OmegaT;
-		const OmegaT&   mOmega;
+		typedef boost::numeric::ublas::matrix<double,
+				boost::numeric::ublas::column_major> AdjMatT;
 		const AdjMatT&  mAdjMat;
-		SDPRandWalkProbGen(const OmegaT&, const AdjMatT&);
+		SDPRandWalkProbGen(const AdjMatT&);
 		SDPProb operator()();
 };
 #endif /* __SDP_RAND_WALK_PROB_GEN_HPP__ */
