@@ -1,4 +1,4 @@
-build/
+build/*
 # unignore /build/ dir in third_party
 !/build
 .svn
