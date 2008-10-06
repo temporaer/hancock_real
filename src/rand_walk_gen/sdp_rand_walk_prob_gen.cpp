@@ -14,12 +14,10 @@ SDPRandWalkProbGen::SDPRandWalkProbGen(const AdjMatT&a)
 }
 
 
-SDPProb SDPRandWalkProbGen::operator()()
+void SDPRandWalkProbGen::operator()(SDPProb& prob)
 {
 	using ublas::identity_matrix;
 	typedef AdjMatT Matrix ;
-
-	SDPProb prob;
 
 	I(mAdjMat.size1() == mAdjMat.size2());
 
@@ -50,6 +48,5 @@ SDPProb SDPRandWalkProbGen::operator()()
 	// b_0
 	prob.b = ublas::vector<double>(1);
 	prob.b(0) = 1;
-	return prob;
 }
 

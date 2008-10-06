@@ -11,7 +11,7 @@ class SDPRandWalkProbGen{
 				boost::numeric::ublas::column_major> AdjMatT;
 		const AdjMatT&  mAdjMat;
 		SDPRandWalkProbGen(const AdjMatT&);
-		SDPProb operator()();
+		void operator()(SDPProb&);
 };
 #endif /* __SDP_RAND_WALK_PROB_GEN_HPP__ */
 

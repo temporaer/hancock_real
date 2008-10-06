@@ -11,10 +11,12 @@ RandWalkGen::RandWalkT SDPRandWalkGen::operator()(const AdjMatT& adj)
 {
 	I(adj.size1() == adj.size2());
 
+	// Generate the SDP-Problem
+	SDPProb prob;
 	SDPRandWalkProbGen sdp_probgen(adj);
+	sdp_probgen(prob);
 
-	SDPProb prob = sdp_probgen();
-
+	// Solve the SDP-Problem using an SDP Wrapper
 	RandWalkT ret;
 	return ret;
 }
