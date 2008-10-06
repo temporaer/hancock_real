@@ -39,6 +39,7 @@ void SDPRandWalkProbGen::operator()(SDPProb& prob)
 	omega_m1_2(n-1,n-1) = 1;
 
 	// C
+	prob.C = Matrix(n,n);
 	noalias(prob.C) = prod(omega_1_2, Matrix(prod(mAdjMat,omega_m1_2)));
 
 	// F_0
