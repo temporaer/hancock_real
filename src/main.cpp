@@ -21,7 +21,7 @@ int main(int argc, char* argv[]){
 	AdjMatCT adjmat(6,6);
 
 	SDPSeriationGen walkgen;
-	string sdp_wrapper_name          = gCfg().getString("sdp-wrapper");
+	string sdp_wrapper_name          = gCfg().getString("ser-sdp-wrapper");
 	auto_ptr<SDPWrapper> sdp_wrapper = genericFactory<SDPWrapper>::instance().create(sdp_wrapper_name);
 	walkgen.setSDPWrapper( sdp_wrapper );
 
