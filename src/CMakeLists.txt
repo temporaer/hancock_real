@@ -24,34 +24,39 @@ find_package( Boost 1.35 COMPONENTS program_options )
 link_directories ( ${Boost_LIBRARY_DIRS} ${LAPACK_LIBRARIES} )
 include_directories ( ${Boost_INCLUDE_DIRS} configuration )
 
+# uBlas Backend
 FIND_PACKAGE(BLAS REQUIRED)
-MESSAGE("Using this version of blas95 ${BLAS95_LIBRARIES} with flags
-${BLAS_LINKER_FLAGS}")
-
 FIND_PACKAGE(LAPACK REQUIRED)
-MESSAGE("Using this version of lapack95 ${LAPACK95_LIBRARIES} with flags
-${LAPACK_LINKER_FLAGS}")
 
 # Nana
 find_package( Nana )
 include_directories ( ${NANA_INCLUDE_DIRS} )
 
+# general third party
+include_directories ( ${CMAKE_SOURCE_DIR}/third_party )
+
 # SDP
 SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} ${CMAKE_SOURCE_DIR}/third_party/Csdp-6.0.1/include )
 SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} ${CMAKE_SOURCE_DIR}/third_party/Csdp-6.0.1/lib )
 find_package( CSDP )
-include_directories ( ${CSDP_INCLUDE_DIRS} )
-link_directories    ( ${CSDP_LIBRARY_DIRS} )
+IF(CSDP_FOUND)
+	include_directories ( ${CSDP_INCLUDE_DIRS} )
+	link_directories    ( ${CSDP_LIBRARY_DIRS} )
+	ADD_DEFINITIONS(-DHAVE_CSDP)
+ENDIF(CSDP_FOUND)
 find_package( DSDP )
-include_directories ( ${DSDP_INCLUDE_DIRS} )
-link_directories ( ${DSDP_LIBRARY_DIRS} )
+IF(DSDP_FOUND)
+	include_directories ( ${DSDP_INCLUDE_DIRS} )
+	link_directories ( ${DSDP_LIBRARY_DIRS} )
+	ADD_DEFINITIONS(-DHAVE_DSDP)
+ENDIF(DSDP_FOUND)
 
 # subdirs: sub-libs
-ADD_SUBDIRECTORY( rand_walk_gen )
+ADD_SUBDIRECTORY( seriation_gen )
 ADD_SUBDIRECTORY( configuration )
 ADD_SUBDIRECTORY( sdp_wrappers )
 include_directories( 
-  ${CMAKE_SOURCE_DIR}/rand_walk_gen 
+  ${CMAKE_SOURCE_DIR}/seriation_gen 
   ${CMAKE_SOURCE_DIR}/configuration 
   ${CMAKE_SOURCE_DIR}/sdp_wrappers )
 
@@ -62,8 +67,14 @@ ADD_SUBDIRECTORY( tests EXCLUDE_FROM_ALL )
 ADD_CUSTOM_TARGET( test DEPENDS tests)
 ADD_DEPENDENCIES( test tests )
 
+MESSAGE(STATUS "Boost Libs: ${Boost_LIBRARIES} ${Boost_LIBRARY_DIRS}" )
 add_executable( hrmain main.cpp )
-target_link_libraries(hrmain ${Boost_LIBRARIES}  hrconfig rand_walk_gen sdp_wrappers )
+target_link_libraries(hrmain 
+	${Boost_LIBRARIES}  
+	${NANA_LIBRARIES} 
+	hrconfig 
+	seriation_gen 
+	sdp_wrappers )
 
 #add_library( hello SHARED hello.cpp )
 

@@ -6,4 +6,4 @@ IF( CMAKE_COMPILER_IS_GNUCXX )
 ENDIF()
 
 add_library( hrconfig SHARED configuration.cpp )
-target_link_libraries(hrconfig  ${Boost_LIBRARIES} ${NANA_LIBRARIES} )
+target_link_libraries( hrconfig ${Boost_LIBRARIES} ${NANA_LIBRARIES} )

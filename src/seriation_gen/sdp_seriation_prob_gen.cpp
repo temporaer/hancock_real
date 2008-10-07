@@ -1,20 +1,20 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Tue Oct 07 01:00 AM 2008 CEST
+ *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
  */
 
 #include <nana.h>
-#include <sdp_rand_walk_prob_gen.hpp>
+#include <sdp_seriation_prob_gen.hpp>
 
 namespace ublas = boost::numeric::ublas;
 using namespace std;
 
-SDPRandWalkProbGen::SDPRandWalkProbGen(const AdjMatT&a)
+SDPSeriationProbGen::SDPSeriationProbGen(const AdjMatT&a)
 	: mAdjMat(a)
 {
 }
 
 
-void SDPRandWalkProbGen::operator()(SDPProb& prob)
+void SDPSeriationProbGen::operator()(SDPProb& prob)
 {
 	using ublas::identity_matrix;
 	typedef SDPProb::MatT Matrix ;

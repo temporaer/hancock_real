@@ -1,21 +1,21 @@
 /*       Created   :  10/05/2008 07:45:51 PM
- *       Last Change: Mon Oct 06 11:00 PM 2008 CEST
+ *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
  */
 
-#ifndef __RAND_WALK_GEN_HPP__
-#define __RAND_WALK_GEN_HPP__
+#ifndef __SERIATION_GEN_HPP__
+#define __SERIATION_GEN_HPP__
 #include <vector>
 #include <boost/numeric/ublas/matrix.hpp>
 
-class RandWalkGen{
+class SeriationGen{
 	public:
 		typedef std::pair<int, int>                                NodeRefT;
-		typedef std::vector<NodeRefT>                              RandWalkT;
+		typedef std::vector<NodeRefT>                              SeriationT;
 		typedef boost::numeric::ublas::matrix<double,
 				boost::numeric::ublas::column_major>               AdjMatT;
 
-		virtual RandWalkT operator()(const AdjMatT&)=0;
+		virtual SeriationT operator()(const AdjMatT&)=0;
 };
 
 
-#endif /* __RAND_WALK_GEN_HPP__ */
+#endif /* __SERIATION_GEN_HPP__ */

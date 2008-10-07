@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 09:37:53 PM
- *       Last Change: Sun Oct 05 07:00 PM 2008 CEST
+ *       Last Change: Tue Oct 07 02:00 PM 2008 CEST
  */
 
 
@@ -31,6 +31,7 @@ class Configuration::Configuration_Impl{
 		int parsecfg(int argc, char* argv[]);
 		void conflicting_options(const std::string& s, const std::string& t);
 		void dependent_options(const std::string& s, const std::string& t);
+
 	private:
 		void conflicting_options(const variables_map& vm, const std::string& s, const std::string& t);
 		void dependent_options(const variables_map&vm, const std::string& s, const std::string& t);
@@ -209,4 +210,9 @@ float Configuration::getFloat(const std::string& s)
 bool Configuration::getBool(const std::string& s)
 {
 	return boost::any_cast<bool>(mImpl->get(s));
+}
+//Configuration*  Configuration::mInstance = NULL;
+Configuration& gCfg(){
+	static Configuration cfg;
+	return cfg;
 }

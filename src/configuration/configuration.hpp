@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 09:40:20 PM
- *       Last Change: Mon Oct 06 05:00 PM 2008 CEST
+ *       Last Change: Tue Oct 07 02:00 PM 2008 CEST
  */
 #ifndef __CONFIGURATION_HPP__
 #define __CONFIGURATION_HPP__
@@ -14,7 +14,8 @@ namespace boost{
 	}
 }
 
-class Configuration{
+class Configuration
+{
 	// the public interface is doubled by Configuration_Impl,
 	// where the real work is done.
 	private:
@@ -22,6 +23,9 @@ class Configuration{
 		boost::shared_ptr<Configuration_Impl> mImpl;
 	public:
 		Configuration();
+		//static Configuration* mInstance;
+		//static inline Configuration&        instance(){ if(!mInstance) mInstance = new Configuration(); return *mInstance;}
+
 		void addModuleOptions(const boost::program_options::options_description& od);
 		int parsecfg(int argc, char* argv[]);
 		void conflicting_options(const std::string& s, const std::string& t);
@@ -35,5 +39,7 @@ class Configuration{
 		int   getInt(const std::string& s);
 		bool  getBool(const std::string& s);
 };
+
+extern Configuration&  gCfg();
 
 #endif /* __CONFIGURATION_HPP__ */
