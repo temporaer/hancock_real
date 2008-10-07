@@ -1,3 +1,4 @@
+tags
 build/*
 # unignore /build/ dir in third_party
 !/build
@@ -12,3 +13,12 @@ build/*
 *.lo
 *.so
 *.tmp
+
+# Csdp binaries
+src/third_party/Csdp-6.0.1/example/example
+src/third_party/Csdp-6.0.1/lib/libsdp.a
+src/third_party/Csdp-6.0.1/solver/csdp
+src/third_party/Csdp-6.0.1/theta/complement
+src/third_party/Csdp-6.0.1/theta/graphtoprob
+src/third_party/Csdp-6.0.1/theta/rand_graph
+src/third_party/Csdp-6.0.1/theta/theta
