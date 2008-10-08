@@ -11,6 +11,9 @@ CSDPWrapper::AnswerT CSDPWrapper::operator()(const SDPProb&)
 	AnswerT ret;
 	return ret;
 }
+ CSDPWrapper::~CSDPWrapper(){
+L("Destroying CSDPWrapper\n");
+ }
 
 namespace{
 	registerInFactory<SDPWrapper, CSDPWrapper>  registerBase("CSDPWrapper");

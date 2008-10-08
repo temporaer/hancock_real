@@ -15,7 +15,7 @@ struct DSDPWrapper::Impl{
 
 
 DSDPWrapper::AnswerT DSDPWrapper::Impl::operator()(const SDPProb&prob){
-	L("DSDPWrapper::operator()\n"); 
+	L("DSDPWrapper::operator()\n");
 	AnswerT ret;
 	return ret;
 }
@@ -25,6 +25,10 @@ DSDPWrapper::AnswerT DSDPWrapper::Impl::operator()(const SDPProb&prob){
 DSDPWrapper::DSDPWrapper()
 	: mImpl(new Impl)
 {
+}
+DSDPWrapper::~DSDPWrapper()
+{
+    L("Destroying DSDPWrapper");
 }
 DSDPWrapper::AnswerT DSDPWrapper::operator()(const SDPProb& prob)
 {

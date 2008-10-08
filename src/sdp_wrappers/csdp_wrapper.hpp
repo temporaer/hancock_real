@@ -8,6 +8,7 @@
 class CSDPWrapper: public SDPWrapper
 {
 	virtual AnswerT operator()(const SDPProb&);
+	virtual ~CSDPWrapper();
 };
 #endif
 

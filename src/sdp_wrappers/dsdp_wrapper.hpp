@@ -14,6 +14,7 @@ class DSDPWrapper: public SDPWrapper
 
 	public:
 		DSDPWrapper();
+		virtual ~DSDPWrapper();
 		virtual AnswerT operator()(const SDPProb&);
 };
 #endif

@@ -3,6 +3,7 @@
  */
 
 #include <exception>
+#include <nana.h>
 #include <sdp_wrapper.hpp>
 #include <factory/factory.h>
 
@@ -13,6 +14,7 @@ SDPWrapper::AnswerT SDPWrapper::operator()(const SDPProb&)
 	throw logic_error("Called SDPWrapper() w/o subclassing");
 }
 SDPWrapper::~SDPWrapper(){
+    L("Destroying SDPWrapper\n");
 }
 
 
