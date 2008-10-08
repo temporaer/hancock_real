@@ -9,6 +9,7 @@
 #include "configuration.hpp"
 
 #include <sdp_seriation_gen.hpp>
+#include <sdp_wrapper.hpp>
 
 #include <boost/numeric/ublas/matrix.hpp>
 using namespace boost::numeric::ublas;
