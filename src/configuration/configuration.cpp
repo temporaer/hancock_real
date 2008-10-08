@@ -73,7 +73,7 @@ void Configuration::Configuration_Impl::setGenericOptions()
 		mGeneric.add_options()
 			("help,h",   "print usage message")
 			("cfg,c",     value<string>()->default_value("config.dat"), "use this as a config file")
-			("action,a",  value<string>(), "what to do")
+			("action,a",  value<string>()->default_value("run"), "what to do")
 			("verbose,v", bool_switch(&mVerbose),"be verbose")
 			("quiet,q",   bool_switch(&mQuiet),"be quiet")
 			;
@@ -107,13 +107,19 @@ int Configuration::Configuration_Impl::parsecfg(int argc, char* argv[]){
 				command_line_parser(argc,argv)
 				.options(mCmdLine)
 				.positional(mPosOpt).run(),mVM);
+        notify(mVM);
 
-		if(mVM.count("verbose"))
-			cout<<"Loading Config from ``"<<mVM["cfg"].as<string>()<<"''"<<endl;
 		ifstream config_file(mVM["cfg"].as<string>().c_str());
-		store(
-				parse_config_file(config_file,mConfigFile), mVM);
-		notify(mVM);
+		if(config_file){
+            if(mVM["verbose"].as<bool>())
+                cout<<"Loading Config from ``"<<mVM["cfg"].as<string>()<<"''"<<endl;
+            store(
+                    parse_config_file(config_file,mConfigFile), mVM);
+            notify(mVM);
+		}else{
+		    if(mVM["verbose"].as<bool>())
+                cout<<"Config File `"<<mVM["cfg"].as<string>()<<"' could not be opened."<<endl;
+		}
 		if(mVM.count("help")) {
 			cout << mVisible << endl;
 			exit(0);
@@ -147,12 +153,12 @@ void Configuration::Configuration_Impl::dependent_options(
 	I(s != t);
 	mDependencies.push_back(make_pair(s,t));
 }
-void Configuration::Configuration_Impl::conflicting_options(const variables_map& vm, 
+void Configuration::Configuration_Impl::conflicting_options(const variables_map& vm,
 		const string& opt1, const string& opt2)
 {
-	if (vm.count(opt1) && !vm[opt1].defaulted() 
+	if (vm.count(opt1) && !vm[opt1].defaulted()
 			&& vm.count(opt2) && !vm[opt2].defaulted())
-		throw logic_error(string("Conflicting options '") 
+		throw logic_error(string("Conflicting options '")
 				+ opt1 + "' and '" + opt2 + "'.");
 }
 
@@ -161,7 +167,7 @@ void Configuration::Configuration_Impl::dependent_options(const variables_map& v
 {
 	if (vm.count(for_what) && !vm[for_what].defaulted())
 		if (vm.count(required_option) == 0 || vm[required_option].defaulted())
-			throw logic_error(string("Option '") + for_what 
+			throw logic_error(string("Option '") + for_what
 					+ "' requires option '" + required_option + "'.");
 }
 
