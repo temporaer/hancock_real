@@ -9,9 +9,23 @@
 
 using namespace boost::numeric::ublas;
 using namespace std;
-SeriationGen::SeriationT SDPSeriationGen::operator()(const AdjMatT& adj)
+
+// Implementation of SeriationGen
+
+struct SDPSeriationGen::Impl{
+    std::auto_ptr<SDPWrapper> mSDPWrapper;
+    typedef SeriationGen::AdjMatT AdjMatT;
+    SeriationGen::SeriationT operator()(const AdjMatT& adj);
+    void setSDPWrapper(std::auto_ptr<SDPWrapper> w);
+    ~Impl();
+};
+SDPSeriationGen::Impl::~Impl(){
+}
+
+SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(const AdjMatT& adj)
 {
 	I(adj.size1() == adj.size2());
+	I(mSDPWrapper.get() != NULL);
 
 	// Generate the SDP-Problem
 	SDPProb prob;
@@ -25,4 +39,34 @@ SeriationGen::SeriationT SDPSeriationGen::operator()(const AdjMatT& adj)
 	return ret;
 }
 
+
+void SDPSeriationGen::Impl::setSDPWrapper(std::auto_ptr<SDPWrapper> w){
+  mSDPWrapper = w;
+}
+
+
+
+
+// Wrap SeriationGen::Impl
+
+SDPSeriationGen::SDPSeriationGen()
+:mImpl(new Impl)
+{
+
+}
+
+
+SeriationGen::SeriationT SDPSeriationGen::operator()(const AdjMatT& adj)
+{
+    return (*mImpl)(adj);
+}
+
+void SDPSeriationGen::setSDPWrapper(std::auto_ptr<SDPWrapper> w){
+    mImpl->setSDPWrapper(w);
+}
+
+SDPSeriationGen::~SDPSeriationGen()
+{
+L("Destroying SDPSeriationGen\n");
+}
 

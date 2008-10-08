@@ -5,15 +5,22 @@
 #ifndef __SDP_SERIATION_GEN_HPP__
 #define __SDP_SERIATION_GEN_HPP__
 #include <memory>
+#include <boost/shared_ptr.hpp>
 #include <seriation_gen.hpp>
-#include <sdp_wrapper.hpp>
-class SDPSeriationGen : public SeriationGen 
+//#include <sdp_wrapper.hpp>
+
+class SDPWrapper;
+
+class SDPSeriationGen : public SeriationGen
 {
 	private:
-		std::auto_ptr<SDPWrapper> mSDPWrapper;
+		struct Impl;
+		boost::shared_ptr<Impl> mImpl;
 	public:
-		inline  void setSDPWrapper(std::auto_ptr<SDPWrapper> w){mSDPWrapper = w;}
+        SDPSeriationGen();
+		void setSDPWrapper(std::auto_ptr<SDPWrapper> w);
 		virtual SeriationT operator()(const AdjMatT&);
+		virtual ~SDPSeriationGen();
 };
 #endif /* __SDP_SERIATION_GEN_HPP__ */
 
