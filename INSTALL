@@ -1,6 +1,25 @@
+Prerequisites
+-------------
+
+You need the following to compile:
+
+- a current boost version (tested with 1.35)
+- GNU NANA  (Logging + Assertions)
+- an SDP-Solver (see below)
+
+
+Compiling
+---------
+
+$ mkdir -p build/release
+$ cd build/release
+$ cmake ../../src
+$ make
+
 
 SDP-Solvers
 ------------
+
 You will need at least one of the following:
 1) CSDP
    $ cd src/third_party/Csdp-6.0.1
