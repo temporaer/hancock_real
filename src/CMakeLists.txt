@@ -6,6 +6,9 @@ SET(Boost_ADDITIONAL_VERSIONS "1.34" "1.34.1" "1.35" "1.35.1" "1.36" "1.36.1" )
 PROJECT(HancockReal CXX Fortran)
 SET(CMAKE_PROJECT_NAME "Hancock REAL" )
 
+# find errors/eclipse auto-incl-dir discovery
+SET(CMAKE_VERBOSE_MAKEFILE ON)
+
 # Packaging
 SET(CPACK_PACKAGE_NAME                hancock_real )
 SET(CPACK_PACKAGE_CONTACT             "Hannes Schulz <mail@hannes-schulz.de>" )
@@ -14,6 +17,15 @@ SET(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Serializes Graphs for Use with REAL" )
 SET(CPACK_DEBIAN_PACKAGE_ARCHITECTURE i386 )
 SET(CPACK_DEBIAN_PACKAGE_PRIORITY     optional )
 INCLUDE(CPack)
+
+# No linebreaks in errors (gcc) (easier parsing)
+IF(CMAKE_COMPILER_IS_GNUCC)
+	SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fmessage-length=0 ")
+ENDIF(CMAKE_COMPILER_IS_GNUCC)
+IF(CMAKE_COMPILER_IS_GNUCXX)
+	SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fmessage-length=0 ")
+	MESSAGE(STATUS ${CMAKE_CXX_FLAGS})
+ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
 
 # Precompiled Headers
