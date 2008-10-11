@@ -16,6 +16,8 @@ SDPSeriationProbGen::SDPSeriationProbGen(const AdjMatT&a)
 
 void SDPSeriationProbGen::operator()(SDPProb& prob)
 {
+    // TODO: write test for this
+    // TODO: create omegas in separate func, test it
 	using ublas::identity_matrix;
 	typedef SDPProb::MatT Matrix ;
 

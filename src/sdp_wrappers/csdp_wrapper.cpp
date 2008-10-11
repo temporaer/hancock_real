@@ -8,6 +8,7 @@
 CSDPWrapper::AnswerT CSDPWrapper::operator()(const SDPProb&)
 {
 	L("CSDPWrapper::operator()\n");
+	// TODO: wrap csdp.
 	AnswerT ret;
 	return ret;
 }
