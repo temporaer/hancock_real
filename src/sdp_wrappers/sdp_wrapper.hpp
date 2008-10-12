@@ -5,8 +5,9 @@
 #ifndef __SDP_WRAPPER_HPP__
 #define __SDP_WRAPPER_HPP__
 
-#include <boost/numeric/ublas/matrix.hpp>
-#include <sdp_prob.hpp>
+#include <boost/numeric/ublas/fwd.hpp>
+//#include <sdp_prob.hpp>
+class SDPProb;
 
 class SDPWrapper{
 	public:

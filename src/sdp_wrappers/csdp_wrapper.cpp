@@ -5,6 +5,8 @@
 #include <nana.h>
 #include <csdp_wrapper.hpp>
 #include <factory/factory.h>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/vector.hpp>
 CSDPWrapper::AnswerT CSDPWrapper::operator()(const SDPProb&)
 {
 	L("CSDPWrapper::operator()\n");

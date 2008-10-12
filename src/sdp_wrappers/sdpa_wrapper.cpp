@@ -1,12 +1,14 @@
 /*       Created   :  10/06/2008 12:52:01 AM
  *       Last Change: Tue Oct 07 08:00 PM 2008 CEST
  */
-
 #include <fstream>
 #include <cstdlib>
 #include <nana.h>
+#include <sdp_prob.hpp>
 #include <sdpa_wrapper.hpp>
 #include <factory/factory.h>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/io.hpp>
 #include <configuration.hpp>
 

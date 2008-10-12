@@ -6,6 +6,8 @@
 #include <nana.h>
 #include <sdp_wrapper.hpp>
 #include <factory/factory.h>
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/vector.hpp>
 
 using namespace std;
 

@@ -33,3 +33,5 @@ ENDIF(SDPA_FOUND)
 SET(SRC ${SRC} sdp_wrapper_cfg.cpp sdp_wrapper.cpp sdp_wrapper.hpp )
 
 add_library( sdp_wrappers SHARED ${SRC} )
+include_directories( ${CMAKE_CURRENT_BINARY_DIR})
+add_precompiled_header( sdp_wrappers ${CMAKE_CURRENT_SOURCE_DIR}/sdp_wrappers_prec.hpp )

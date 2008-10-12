@@ -2,6 +2,8 @@
  *       Last Change: Tue Oct 07 08:00 PM 2008 CEST
  */
 
+#include <boost/numeric/ublas/matrix.hpp>
+#include <boost/numeric/ublas/vector.hpp>
 #include <nana.h>
 #include <configuration.hpp>
 #include <dsdp_wrapper.hpp>

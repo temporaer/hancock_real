@@ -4,7 +4,8 @@
 
 #ifndef __SDP_SERIATION_PROB_GEN_HPP__
 #define __SDP_SERIATION_PROB_GEN_HPP__
-#include <sdp_prob.hpp>
+#include <boost/numeric/ublas/matrix.hpp>
+class SDPProb;
 class SDPSeriationProbGen{
 	public:
 		typedef boost::numeric::ublas::matrix<double,

@@ -19,7 +19,7 @@
 //
 // Steps to using the factory:
 // 1 - Create the base class and its derivatives
-// 2 - Register each class in the factory by instantiating a 
+// 2 - Register each class in the factory by instantiating a
 //     registerInFactory<> template class - do this in one file only (the
 //     class implementation file is the perfect place for this)
 // 3 - create the object by calling create() and passing it the same
@@ -45,6 +45,7 @@
 
 #ifndef FACTORY_HEADER_DEFINED
 #define FACTORY_HEADER_DEFINED
+#include <string>
 #include <map>
 #include <memory>
 #include <vector>

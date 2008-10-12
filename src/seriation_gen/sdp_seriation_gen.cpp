@@ -2,6 +2,7 @@
  *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
  */
 #include <nana.h>
+#include <sdp_prob.hpp>
 #include <sdp_seriation_gen.hpp>
 #include <sdp_seriation_prob_gen.hpp>
 #include <sdp_wrapper.hpp>

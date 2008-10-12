@@ -4,6 +4,7 @@
 
 #include <nana.h>
 #include <sdp_seriation_prob_gen.hpp>
+#include <sdp_prob.hpp>
 
 namespace ublas = boost::numeric::ublas;
 using namespace std;
