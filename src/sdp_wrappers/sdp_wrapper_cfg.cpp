@@ -28,6 +28,13 @@ SDPWrapperCfg::SDPWrapperCfg(){
 		;
 	OD.add(csdp);
 #endif
+#ifdef HAVE_SDPA
+    options_description sdpa("SDPA Options");
+    sdpa.add_options()
+        ("sdpa-param-file",value<string>()->default_value(SDPA_PARAM_FILE), "SDPA Parameter File")
+        ;
+    OD.add(sdpa);
+#endif
 	gCfg().addModuleOptions(OD);
 }
 namespace{
