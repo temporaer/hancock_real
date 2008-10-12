@@ -5,10 +5,14 @@
 #ifndef __CSDP_WRAPPER_HPP__
 #define __CSDP_WRAPPER_HPP__
 #include <sdp_wrapper.hpp>
-class CSDPWrapper: public SDPWrapper
+class SDPAWrapper: public SDPWrapper
 {
-	virtual AnswerT operator()(const SDPProb&);
-	virtual ~CSDPWrapper();
+    public:
+        virtual AnswerT operator()(const SDPProb&);
+        virtual ~SDPAWrapper();
+	private:
+        void writeSDPAInputFile(const SDPProb&, const char*);
+        void runSDPA(const char* in, const char* out,const char* par);
 };
 #endif
 
