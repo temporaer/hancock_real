@@ -47,7 +47,7 @@ include_directories ( ${NANA_INCLUDE_DIRS} )
 # general third party
 include_directories ( ${CMAKE_SOURCE_DIR}/third_party )
 
-# SDP
+# SDP-Solvers
 SET(CMAKE_INCLUDE_PATH ${CMAKE_INCLUDE_PATH} ${CMAKE_SOURCE_DIR}/third_party/Csdp-6.0.1/include )
 SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} ${CMAKE_SOURCE_DIR}/third_party/Csdp-6.0.1/lib )
 find_package( CSDP )
@@ -62,6 +62,12 @@ IF(DSDP_FOUND)
 	link_directories ( ${DSDP_LIBRARY_DIRS} )
 	ADD_DEFINITIONS(-DHAVE_DSDP)
 ENDIF(DSDP_FOUND)
+FIND_PROGRAM(SDPA_BINARY sdpa PATHS ${CMAKE_SOURCE_DIR}/third_party/sdpa-7.1.1)
+IF(SDPA_BINARY)
+	SET(SDPA_FOUND true)
+	ADD_DEFINITIONS(-DSDPA_BINARY="${SDPA_BINARY}")
+	ADD_DEFINITIONS(-DHAVE_SDPA)
+ENDIF(SDPA_FOUND)
 
 # subdirs: sub-libs
 ADD_SUBDIRECTORY( seriation_gen )
