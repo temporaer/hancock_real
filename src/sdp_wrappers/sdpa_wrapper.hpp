@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:57:46 AM
- *       Last Change: Mon Oct 06 01:00 AM 2008 CEST
+ *       Last Change: Sun Oct 12 10:00 PM 2008 CEST
  */
 
 #ifndef __CSDP_WRAPPER_HPP__
@@ -12,6 +12,7 @@ class SDPAWrapper: public SDPWrapper
         virtual ~SDPAWrapper();
 	private:
         void writeSDPAInputFile(const SDPProb&, const char*);
+        bool readSDPAOutputFile(const char*, AnswerT&);
         void runSDPA(const char* in, const char* out,const char* par);
 };
 #endif

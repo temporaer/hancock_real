@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Tue Oct 07 08:00 PM 2008 CEST
+ *       Last Change: Sun Oct 12 10:00 PM 2008 CEST
  */
 #include <fstream>
 #include <cstdlib>
@@ -10,6 +10,8 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/numeric/ublas/io.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/lexical_cast.hpp>
 #include <configuration.hpp>
 
 #ifndef SDPA_BINARY
@@ -53,6 +55,37 @@ void SDPAWrapper::writeSDPAInputFile(const SDPProb& p, const char* fn)
 	    sdpaPrintMat(o,m);
 	}
 }
+bool SDPAWrapper::readSDPAOutputFile(const char*out, AnswerT& ret)
+{
+	ifstream is(out);
+	string line;
+	bool found = false;
+	while( !found && getline(is,line) ){
+		string start ( line.substr(0,6) );
+		if( start == "xVec =" )
+			found = true;
+	}
+	if(found == false){
+		IP(found,"Could not parse SDPA output, xVec not found");
+		return false;
+	}
+	getline(is,line); // get xVec
+	line = line.substr(1,line.size()-2);
+
+
+	// extract numbers as strings
+	vector<string> strvec;
+	boost::split( strvec, line, boost::is_any_of(",") );
+
+	// convert strings to doubles
+	int i=0;
+	ret = AnswerT(strvec.size());
+	for(vector<string>::iterator it = strvec.begin();it!=strvec.end();it++,i++){
+		ret(i) = boost::lexical_cast<double>(*it);
+	}
+
+	return true;
+}
 
 void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 {
@@ -64,13 +97,13 @@ void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
 {
 	L("SDPAWrapper::operator()\n");
-	// TODO: wrap sdpa.
 	const char* fn_in  = "/tmp/x.dat";
 	const char* fn_out = "/tmp/x.out";
 	const char* fn_par = gCfg().getString("sdpa-param-file").c_str();
 	writeSDPAInputFile(p,fn_in);
 	runSDPA(fn_in,fn_out,fn_par);
 	AnswerT ret;
+	readSDPAOutputFile(fn_out,ret);
 	return ret;
 }
 SDPAWrapper::~SDPAWrapper()
