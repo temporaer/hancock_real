@@ -10,6 +10,10 @@
 #include <boost/numeric/ublas/io.hpp>
 #include <configuration.hpp>
 
+#ifndef SDPA_BINARY
+#  error "You need to define SDPA_BINARY, pointing me to where sdpa resides"
+#endif
+
 using namespace std;
 
 template<class T>
