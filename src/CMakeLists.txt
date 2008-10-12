@@ -64,7 +64,7 @@ FIND_PROGRAM(SDPA_BINARY sdpa PATHS ${CMAKE_SOURCE_DIR}/third_party/sdpa-7.1.1)
 IF(SDPA_BINARY)
 	GET_FILENAME_COMPONENT(SDPA_PATH ${SDPA_BINARY} PATH)
 	SET(SDPA_FOUND true)
-ENDIF(SDPA_FOUND)
+ENDIF(SDPA_BINARY)
 
 # subdirs: sub-libs
 ADD_SUBDIRECTORY( seriation_gen )
@@ -79,8 +79,8 @@ include_directories(
 ADD_SUBDIRECTORY( python_bindings EXCLUDE_FROM_ALL ) 
 ADD_SUBDIRECTORY( tests EXCLUDE_FROM_ALL ) 
 
-ADD_CUSTOM_TARGET( test DEPENDS tests)
-ADD_DEPENDENCIES( test tests )
+#ADD_CUSTOM_TARGET( test DEPENDS tests)
+#ADD_DEPENDENCIES( test tests )
 
 MESSAGE(STATUS "Boost Libs: ${Boost_LIBRARIES} ${Boost_LIBRARY_DIRS}" )
 add_executable( hrmain main.cpp )
