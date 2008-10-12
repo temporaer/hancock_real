@@ -31,3 +31,4 @@ src/third_party/sdpa-7.1.1/sdpa
 .externalToolBuilders
 .project
 .settings
+src/Makefile
