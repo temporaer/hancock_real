@@ -17,7 +17,7 @@ SeriationGenCfg::SeriationGenCfg(){
 	options_description od("Seriation Generator Options");
 	od.add_options()
 		("ser-gen,g", value<string>()->default_value("SDP"), "How to generate seriation")
-		("ser-sdp-wrapper,w",value<string>()->default_value("DSDPWrapper"),"Which SDP-Solver to use")
+		("ser-sdp-wrapper,w",value<string>()->default_value("SDPAWrapper"),"Which SDP-Solver to use")
 		;
 	gCfg().addModuleOptions(od);
 	gCfg().dependent_options("ser-gen","ser-sdp-wrapper");
