@@ -20,6 +20,9 @@ int main(int argc, char* argv[]){
 
 	typedef matrix<double,column_major> AdjMatCT;
 	AdjMatCT adjmat(6,6);
+	for(int i=0;i<6;i++)
+        for(int j=0;j<6;j++)
+            adjmat(i,j) = (i+j)%2;
 
 	SDPSeriationGen walkgen;
 	string sdp_wrapper_name          = gCfg().getString("ser-sdp-wrapper");
