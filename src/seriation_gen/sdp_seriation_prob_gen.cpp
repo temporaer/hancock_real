@@ -13,11 +13,30 @@ SDPSeriationProbGen::SDPSeriationProbGen(const AdjMatT&a)
 {
 }
 
+void SDPSeriationProbGen::calcOmega(int n){
+    I(n>0);
+    using ublas::identity_matrix;
+	typedef SDPProb::MatT Matrix ;
+
+//	// omega
+//	Matrix mOmega( 2*identity_matrix<double>(n) );
+//	mOmega(0,0)     = 1;
+//	mOmega(n-1,n-1) = 1;
+
+	// omega^(1/2)
+	mOmega_1_2 = Matrix( sqrt(2) * identity_matrix<double>(n) );
+	mOmega_1_2(0,0)     = 1;
+	mOmega_1_2(n-1,n-1) = 1;
+
+	// omega^(-1/2)
+	mOmega_m_1_2 = Matrix( (1.0/sqrt(2)) * identity_matrix<double>(n) );
+	mOmega_m_1_2(0,0)     = 1;
+	mOmega_m_1_2(n-1,n-1) = 1;
+}
 
 void SDPSeriationProbGen::operator()(SDPProb& prob)
 {
     // TODO: write test for this
-    // TODO: create omegas in separate func, test it
 	using ublas::identity_matrix;
 	typedef SDPProb::MatT Matrix ;
 
@@ -25,30 +44,17 @@ void SDPSeriationProbGen::operator()(SDPProb& prob)
 
 	int n = mAdjMat.size1();
 
-	// omega
-	Matrix omega( 2*identity_matrix<double>(n) );
-	omega(0,0)     = 1;
-	omega(n-1,n-1) = 1;
+	calcOmega(n);
 
-	// omega^(1/2)
-	Matrix omega_1_2 ( sqrt(2) * identity_matrix<double>(n) );
-	omega_1_2(0,0)     = 1;
-	omega_1_2(n-1,n-1) = 1;
-
-	// omega^(-1/2)
-	Matrix omega_m1_2 ( (1.0/sqrt(2)) * identity_matrix<double>(n) );
-	omega_m1_2(0,0)     = 1;
-	omega_m1_2(n-1,n-1) = 1;
-
-	// C
+	// C = F_0
 	prob.C = Matrix(n,n);
-	noalias(prob.C) = prod(omega_1_2, Matrix(prod(mAdjMat,omega_m1_2)));
+	noalias(prob.C) = prod(mOmega_1_2, Matrix(prod(mAdjMat,mOmega_m_1_2)));
 
-	// F_0
+	// F_1
 	identity_matrix<double> Id(n);
 	prob.F.push_back(Id);
 
-	// b_0
+	// b_1
 	prob.b = ublas::vector<double>(1);
 	prob.b(0) = 1;
 }

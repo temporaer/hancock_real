@@ -9,9 +9,15 @@ class SDPSeriationProbGen{
 	public:
 		typedef boost::numeric::ublas::matrix<double,
 				boost::numeric::ublas::column_major> AdjMatT;
-		const AdjMatT&  mAdjMat;
 		SDPSeriationProbGen(const AdjMatT&);
 		void operator()(SDPProb&);
+
+    private:
+        const AdjMatT&  mAdjMat;
+		AdjMatT         mOmega;
+		AdjMatT         mOmega_1_2;
+		AdjMatT         mOmega_m_1_2;
+		void calcOmega(int n);
 };
 #endif /* __SDP_SERIATION_PROB_GEN_HPP__ */
 
