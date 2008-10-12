@@ -8,7 +8,9 @@ ENDIF()
 include_directories ( . ${CMAKE_SOURCE_DIR}/sdp_wrappers )
 
 add_library( seriation_gen SHARED 
-	seriation_gen_cfg.cpp
-	sdp_seriation_gen.cpp 
-	sdp_seriation_prob_gen.cpp )
+	seriation_gen_cfg.cpp      seriation_gen.hpp
+	sdp_seriation_gen.cpp      sdp_seriation_gen.hpp
+	sdp_seriation_prob_gen.cpp sdp_seriation_prob_gen.hpp 
+	sdp_prob.hpp
+	)
 target_link_libraries(seriation_gen  ${Boost_LIBRARIES} ${NANA_LIBRARIES} )
