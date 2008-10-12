@@ -20,6 +20,12 @@
 
 using namespace std;
 
+// helper function to print a matrix in the format required by SDPA:
+//  {{1,2,3},{4,5,6},{7,8,9}}
+// for
+//  /1 2 3\
+//  |4 5 6|
+//  \7 8 9/
 template<class T>
 void sdpaPrintMat(ofstream& o,const T& m)
 {
