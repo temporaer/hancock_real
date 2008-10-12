@@ -22,3 +22,12 @@ src/third_party/Csdp-6.0.1/theta/complement
 src/third_party/Csdp-6.0.1/theta/graphtoprob
 src/third_party/Csdp-6.0.1/theta/rand_graph
 src/third_party/Csdp-6.0.1/theta/theta
+
+src/third_party/sdpa-7.1.1/.deps
+src/third_party/sdpa-7.1.1/spooles/build
+src/third_party/sdpa-7.1.1/sdpa
+
+.cproject
+.externalToolBuilders
+.project
+.settings
