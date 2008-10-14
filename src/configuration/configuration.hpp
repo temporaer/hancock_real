@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 09:40:20 PM
- *       Last Change: Tue Oct 07 02:00 PM 2008 CEST
+ *       Last Change: Mon Oct 13 12:00 PM 2008 CEST
  */
 #ifndef __CONFIGURATION_HPP__
 #define __CONFIGURATION_HPP__
@@ -14,32 +14,49 @@ namespace boost{
 	}
 }
 
+//! Configures program via config file and command line
 class Configuration
 {
 	// the public interface is doubled by Configuration_Impl,
 	// where the real work is done.
 	private:
-		struct Configuration_Impl;
-		boost::shared_ptr<Configuration_Impl> mImpl;
+		struct Configuration_Impl;                    //!< the actual implementation is in here
+		boost::shared_ptr<Configuration_Impl> mImpl;  //!< use this to access implementation
 	public:
 		Configuration();
-		//static Configuration* mInstance;
-		//static inline Configuration&        instance(){ if(!mInstance) mInstance = new Configuration(); return *mInstance;}
 
+		/*! \brief if you write a module, send the module-options to Configuration via this method
+		 * \param od the options for your module */
 		void addModuleOptions(const boost::program_options::options_description& od);
+
+		//! \brief parse commandline parameters
 		int parsecfg(int argc, char* argv[]);
+
+		/*! \brief tell Configuration about conflicting options
+		 * \param s conflicting option
+		 * \param t conflicting option */
 		void conflicting_options(const std::string& s, const std::string& t);
+
+		/*! \brief tell Configuration about dependent options
+		 * \param s neccessary for t
+		 * \param t valid only with s */
 		void dependent_options(const std::string& s, const std::string& t);
 
+		/*! \brief get any type of parameter, extract it yourself */
 		boost::any get(const std::string& s);
 
-		// convenience stuff for get
+		//! convenience function: get parameter as string
 		std::string getString(const std::string& s);
+		//! convenience function: get parameter as float
 		float getFloat(const std::string& s);
+		//! convenience function: get parameter as int
 		int   getInt(const std::string& s);
+		//! convenience function: get parameter as bool
 		bool  getBool(const std::string& s);
 };
 
-extern Configuration&  gCfg();
+/*! the global Configuration object. 
+ * We wrapped it inside a function so it is definitely constructed before use. */
+extern Configuration&  gCfg(); 
 
 #endif /* __CONFIGURATION_HPP__ */
