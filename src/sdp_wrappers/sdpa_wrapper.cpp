@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Sun Oct 12 10:00 PM 2008 CEST
+ *       Last Change: Tue Oct 14 03:00 PM 2008 CEST
  */
 #include <fstream>
 #include <cstdlib>
@@ -20,12 +20,14 @@
 
 using namespace std;
 
-// helper function to print a matrix in the format required by SDPA:
-//  {{1,2,3},{4,5,6},{7,8,9}}
-// for
-//  /1 2 3\
-//  |4 5 6|
-//  \7 8 9/
+/*!
+* helper function to print a matrix in the format required by SDPA:
+*  {{1,2,3},{4,5,6},{7,8,9}}
+* for
+*  /1 2 3\
+*  |4 5 6|
+*  \7 8 9/
+*/
 template<class T>
 void sdpaPrintMat(ofstream& o,const T& m)
 {

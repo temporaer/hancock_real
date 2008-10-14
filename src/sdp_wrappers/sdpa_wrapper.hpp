@@ -1,10 +1,11 @@
 /*       Created   :  10/06/2008 12:57:46 AM
- *       Last Change: Sun Oct 12 10:00 PM 2008 CEST
+ *       Last Change: Mon Oct 13 12:00 PM 2008 CEST
  */
 
 #ifndef __CSDP_WRAPPER_HPP__
 #define __CSDP_WRAPPER_HPP__
 #include <sdp_wrapper.hpp>
+//! Wraps the SDPA solver to give it an interface specified in SDPWrapper
 class SDPAWrapper: public SDPWrapper
 {
     public:
