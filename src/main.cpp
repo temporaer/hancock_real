@@ -1,7 +1,8 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
+ *       Last Change: Tue Oct 14 12:00 AM 2008 CEST
  */
 
+#include <dlfcn.h>
 #include <string>
 #include <iostream>
 #include <nana.h>
@@ -16,6 +17,8 @@ using namespace boost::numeric::ublas;
 using namespace std;
 
 int main(int argc, char* argv[]){
+	dlopen("sdp_wrappers/libsdp_wrappers.so",RTLD_LAZY);
+	
 	gCfg().parsecfg(argc,argv);
 
 	typedef matrix<double,column_major> AdjMatCT;

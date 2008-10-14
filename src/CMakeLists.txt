@@ -98,9 +98,9 @@ add_executable( hrmain main.cpp )
 target_link_libraries(hrmain 
 	${Boost_LIBRARIES}  
 	${NANA_LIBRARIES} 
+	dl
 	hrconfig 
-	seriation_gen 
-	sdp_wrappers )
+	seriation_gen )
 
 #add_library( hello SHARED hello.cpp )
 
