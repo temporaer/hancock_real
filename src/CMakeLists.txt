@@ -81,6 +81,17 @@ ADD_SUBDIRECTORY( tests EXCLUDE_FROM_ALL )
 
 #ADD_CUSTOM_TARGET( test DEPENDS tests)
 #ADD_DEPENDENCIES( test tests )
+#
+# docs
+find_package(Doxygen QUIET)
+if(DOXYGEN_EXECUTABLE)
+	CONFIGURE_FILE(${CMAKE_SOURCE_DIR}/../doc/Doxyfile.in
+			${CMAKE_CURRENT_BINARY_DIR}/doc/Doxyfile
+			IMMEDIATE)
+	ADD_CUSTOM_TARGET(api-docs ${DOXYGEN_EXECUTABLE} doc/Doxyfile)
+endif(DOXYGEN_EXECUTABLE)
+
+
 
 MESSAGE(STATUS "Boost Libs: ${Boost_LIBRARIES} ${Boost_LIBRARY_DIRS}" )
 add_executable( hrmain main.cpp )
