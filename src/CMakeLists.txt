@@ -7,7 +7,7 @@ PROJECT(HancockReal CXX Fortran)
 SET(CMAKE_PROJECT_NAME "Hancock REAL" )
 
 # find errors/eclipse auto-incl-dir discovery
-SET(CMAKE_VERBOSE_MAKEFILE ON)
+#SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 # Packaging
 SET(CPACK_PACKAGE_NAME                hancock_real )
@@ -27,13 +27,25 @@ IF(CMAKE_COMPILER_IS_GNUCXX)
 	MESSAGE(STATUS ${CMAKE_CXX_FLAGS})
 ENDIF(CMAKE_COMPILER_IS_GNUCXX)
 
+IF(CMAKE_COMPILER_IS_GNUCC)
+	IF(CMAKE_BUILD_TYPE EQUALS "Debug")
+		# Debug mode: Use Safe Containers
+		ADD_DEFINITIONS(-D_GLIBCXX_DEBUG)
+	ELSE()
+		# Other modes: Use Parallel Algorithms
+		# turn off at single uses like so:
+		# std::sort(v.begin(), v.end(), __gnu_parallel::sequential_tag());
+		ADD_DEFINITIONS(-D_GLIBCXX_PARALLEL)
+	ENDIF()
+ENDIF(CMAKE_COMPILER_IS_GNUCC)
+
 
 # Precompiled Headers
 find_package(PCHSupport QUIET)
 
 # Boost
 find_package( Boost 1.35 COMPONENTS program_options )
-link_directories ( ${Boost_LIBRARY_DIRS} ${LAPACK_LIBRARIES} )
+link_directories ( ${Boost_LIBRARY_DIRS} )
 include_directories ( ${Boost_INCLUDE_DIRS} configuration )
 
 # uBlas Backend
@@ -75,13 +87,10 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/configuration 
   ${CMAKE_SOURCE_DIR}/sdp_wrappers )
 
-# subdirs: extensions
+# subdirs: optional extensions
 ADD_SUBDIRECTORY( python_bindings EXCLUDE_FROM_ALL ) 
 ADD_SUBDIRECTORY( tests EXCLUDE_FROM_ALL ) 
 
-#ADD_CUSTOM_TARGET( test DEPENDS tests)
-#ADD_DEPENDENCIES( test tests )
-#
 # docs
 find_package(Doxygen QUIET)
 if(DOXYGEN_EXECUTABLE)
