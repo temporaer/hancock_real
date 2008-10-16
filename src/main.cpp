@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Tue Oct 14 12:00 AM 2008 CEST
+ *       Last Change: Thu Oct 16 04:00 PM 2008 CEST
  */
 
 #include <dlfcn.h>
@@ -25,7 +25,7 @@ int main(int argc, char* argv[]){
 	AdjMatCT adjmat(6,6);
 	for(int i=0;i<6;i++)
         for(int j=0;j<6;j++)
-            adjmat(i,j) = (i+j)%2;
+            adjmat(i,j) = ((i+j)%2>0)?1:0;
 
 	SDPSeriationGen walkgen;
 	string sdp_wrapper_name          = gCfg().getString("ser-sdp-wrapper");
