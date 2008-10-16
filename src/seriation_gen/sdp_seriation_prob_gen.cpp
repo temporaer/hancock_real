@@ -1,10 +1,11 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
+ *       Last Change: Thu Oct 16 04:00 PM 2008 CEST
  */
 
 #include <nana.h>
 #include <sdp_seriation_prob_gen.hpp>
 #include <sdp_prob.hpp>
+//#include <boost/numeric/ublas/io.hpp>
 
 namespace ublas = boost::numeric::ublas;
 using namespace std;
@@ -37,7 +38,6 @@ void SDPSeriationProbGen::calcOmega(int n){
 
 void SDPSeriationProbGen::operator()(SDPProb& prob)
 {
-    // TODO: write test for this
 	using ublas::identity_matrix;
 	typedef SDPProb::MatT Matrix ;
 
@@ -48,8 +48,7 @@ void SDPSeriationProbGen::operator()(SDPProb& prob)
 	calcOmega(n);
 
 	// C = F_0
-	prob.C = Matrix(n,n);
-	noalias(prob.C) = prod(mOmega_1_2, Matrix(prod(mAdjMat,mOmega_m_1_2)));
+	prob.C = prod(mOmega_1_2, Matrix(prod(mAdjMat,mOmega_m_1_2)));
 
 	// F_1
 	identity_matrix<double> Id(n);
