@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:23:53 AM
- *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
+ *       Last Change: Thu Oct 16 03:00 PM 2008 CEST
  */
 
 #ifndef __SDP_SERIATION_PROB_GEN_HPP__
@@ -13,7 +13,7 @@ class SDPSeriationProbGen{
 		SDPSeriationProbGen(const AdjMatT&);
 		void operator()(SDPProb&);
 
-    private:
+    public:
         const AdjMatT&  mAdjMat;
 		AdjMatT         mOmega;
 		AdjMatT         mOmega_1_2;
