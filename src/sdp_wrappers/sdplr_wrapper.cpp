@@ -1,6 +1,5 @@
 #include <fstream>
 #include <cstdlib>
-#include <nana.h>
 #include <sdp_prob.hpp>
 #include <sdplr_wrapper.hpp>
 #include <factory/factory.h>
@@ -10,6 +9,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <configuration.hpp>
+#include <nana.h>
 
 #ifndef SDPLR_BINARY
 #  error "You need to define SDPLR_BINARY, pointing me to where sdplr resides"
@@ -100,9 +100,9 @@ bool SDPLRWrapper::readSDPLROutputFile(const char*out, AnswerT& ret)
 
 	// convert strings to doubles
 	int i=0;
-	ret = AnswerT(strvec.size());
+	boost::numeric::ublas::vector<double> y = boost::numeric::ublas::vector<double>(strvec.size());
 	for(vector<string>::iterator it = strvec.begin();it!=strvec.end();it++,i++){
-		ret(i) = boost::lexical_cast<double>(*it);
+		y(i) = boost::lexical_cast<double>(*it);
 	}
 
 	return true;
