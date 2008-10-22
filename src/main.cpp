@@ -1,11 +1,10 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Thu Oct 16 04:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 09:00 PM 2008 CEST
  */
 
 #include <dlfcn.h>
 #include <string>
 #include <iostream>
-#include <nana.h>
 #include <factory/factory.h>
 #include "configuration.hpp"
 
@@ -13,6 +12,7 @@
 #include <sdp_wrapper.hpp>
 
 #include <boost/numeric/ublas/matrix.hpp>
+#include <nana.h>
 using namespace boost::numeric::ublas;
 using namespace std;
 
