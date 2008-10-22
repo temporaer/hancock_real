@@ -1,14 +1,18 @@
 /*       Created   :  10/03/2008 09:40:20 PM
- *       Last Change: Mon Oct 13 12:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 05:00 PM 2008 CEST
  */
 #ifndef __CONFIGURATION_HPP__
 #define __CONFIGURATION_HPP__
 
+#include <string>
+#include <boost/any.hpp>
 #include <boost/shared_ptr.hpp>
 
 // forward-declare any, options_description
+namespace std{
+	class invalid_argument;
+}
 namespace boost{
-	class any;
 	namespace program_options{
 		class options_description;
 	}
@@ -43,7 +47,22 @@ class Configuration
 		void dependent_options(const std::string& s, const std::string& t);
 
 		/*! \brief get any type of parameter, extract it yourself */
-		boost::any get(const std::string& s);
+		boost::any getAny(const std::string& s);
+
+		/*! \brief get any type of parameter */
+		template<class T>
+		T get(const std::string& s){
+			try{
+				T t = boost::any_cast<T>(getAny(s));
+				return t;
+			}
+			catch(const boost::bad_any_cast &) {
+				throw std::invalid_argument(
+						std::string("Parameter ``")
+						.append(s)
+						.append("'' not given or incorrectly referenced"));
+			}
+		}
 
 		//! convenience function: get parameter as string
 		std::string getString(const std::string& s);

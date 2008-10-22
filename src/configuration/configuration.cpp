@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 09:37:53 PM
- *       Last Change: Tue Oct 07 02:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 05:00 PM 2008 CEST
  */
 
 
@@ -197,25 +197,25 @@ void Configuration::dependent_options(const std::string& s, const std::string& t
 
 
 
-boost::any Configuration::get(const std::string& s)
+boost::any Configuration::getAny(const std::string& s)
 {
 	return mImpl->get(s);
 }
 string Configuration::getString(const std::string& s)
 {
-	return boost::any_cast<string>(mImpl->get(s));
+	return get<std::string>(s);
 }
 int Configuration::getInt(const std::string& s)
 {
-	return boost::any_cast<int>(mImpl->get(s));
+	return get<int>(s);
 }
 float Configuration::getFloat(const std::string& s)
 {
-	return boost::any_cast<float>(mImpl->get(s));
+	return get<float>(s);
 }
 bool Configuration::getBool(const std::string& s)
 {
-	return boost::any_cast<bool>(mImpl->get(s));
+	return get<bool>(s);
 }
 //Configuration*  Configuration::mInstance = NULL;
 Configuration& gCfg(){
