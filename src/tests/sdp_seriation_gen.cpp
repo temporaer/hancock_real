@@ -56,7 +56,7 @@ BOOST_AUTO_TEST_CASE( testDSDP )
 	testSerGen("DSDPWrapper",sdpsergen.get(),am.get());
 }
 #endif
-#ifdef HAVE_SDPLR
+#ifdef xHAVE_SDPLR
 BOOST_AUTO_TEST_CASE( testSDPLR )
 {
 	gCfg().parsecfg(0,NULL);
