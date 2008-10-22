@@ -23,7 +23,7 @@ BOOST_AUTO_TEST_CASE( testVerboseT )
 {
 	char * argv[] = {"prog","action", "-v" };
 	cfg.parsecfg(3,argv);
-	bool verbose = any_cast<bool>(cfg.get("verbose"));
+	bool verbose = any_cast<bool>(cfg.getAny("verbose"));
 	BOOST_CHECK_EQUAL( true, verbose );
 }
 
@@ -31,7 +31,7 @@ BOOST_AUTO_TEST_CASE( testVerboseF )
 {
 	char * argv[] = {"prog","action", "-q" };
 	cfg.parsecfg(3,argv);
-	bool verbose = any_cast<bool>(cfg.get("verbose"));
+	bool verbose = any_cast<bool>(cfg.getAny("verbose"));
 	BOOST_CHECK_EQUAL( false, verbose );
 }
 
@@ -52,7 +52,7 @@ BOOST_AUTO_TEST_CASE( testAction )
 {
 	char * argv[] = {"prog","action", "-v" };
 	cfg.parsecfg(3,argv);
-	string action = any_cast<string>(cfg.get("action"));
+	string action = any_cast<string>(cfg.getAny("action"));
 	BOOST_CHECK_EQUAL( string("action"), action );
 }
 BOOST_AUTO_TEST_CASE( testAction2 )
