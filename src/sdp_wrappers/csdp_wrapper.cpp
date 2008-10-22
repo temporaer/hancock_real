@@ -1,12 +1,12 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Tue Oct 07 08:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 09:00 PM 2008 CEST
  */
 
-#include <nana.h>
 #include <csdp_wrapper.hpp>
 #include <factory/factory.h>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
+#include <nana.h>
 CSDPWrapper::AnswerT CSDPWrapper::operator()(const SDPProb&)
 {
 	L("CSDPWrapper::operator()\n");
