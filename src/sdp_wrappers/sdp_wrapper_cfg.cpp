@@ -1,5 +1,5 @@
 /*       Created   :  10/07/2008 12:08:01 PM
- *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 02:00 PM 2008 CEST
  */
 
 #include <configuration.hpp>
@@ -34,6 +34,13 @@ SDPWrapperCfg::SDPWrapperCfg(){
         ("sdpa-param-file",value<string>()->default_value(SDPA_PARAM_FILE), "SDPA Parameter File")
         ;
     OD.add(sdpa);
+#endif
+#ifdef HAVE_SDPLR
+    options_description sdplr("SDPLR Options");
+    sdplr.add_options()
+        ("sdplr-param-file",value<string>()->default_value(SDPLR_PARAM_FILE), "SDPLR Parameter File")
+        ;
+    OD.add(sdplr);
 #endif
 	gCfg().addModuleOptions(OD);
 }

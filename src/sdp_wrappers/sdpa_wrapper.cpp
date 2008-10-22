@@ -1,7 +1,9 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Tue Oct 14 03:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 06:00 PM 2008 CEST
  */
+#include <exception>
 #include <fstream>
+#include <signal.h>
 #include <cstdlib>
 #include <nana.h>
 #include <sdp_prob.hpp>
@@ -35,9 +37,9 @@ void sdpaPrintMat(ofstream& o,const T& m)
 	SDPProb::MatT::const_iterator2 col;
 	o << "{";
 	for (row = m.begin1(); row != row_end; row++) {
-		if (row!=row_begin) o << ", ";
+		if (row!=row_begin) o << " ";
 		o << "{";
-		copy(row.begin(),row.end(),ostream_iterator<double>(o,", "));
+		copy(row.begin(),row.end(),ostream_iterator<double>(o," "));
 		o << "}";
 	}
 	o << "}"<<endl;
@@ -46,16 +48,32 @@ void sdpaPrintMat(ofstream& o,const T& m)
 void SDPAWrapper::writeSDPAInputFile(const SDPProb& p, const char* fn)
 {
 	ofstream o(fn);
-	o   << "\"SDPA-Wrapper Problem\""         << endl
-	<< " "<<p.C.size1()<<" = mDIM\n"      << endl
-	<< " 1 = nBLOCK"                      << endl
-	<< " "<<p.C.size1()<<" = bLOCKsTRUCT" << endl
+	o   << "\"SDPA-Wrapper Problem\""     << endl
+	<< " "<<p.F.size()<<" = mDIM"         << endl     // no. of constraint matrices
+	<< " 1 = nBLOCK"                      << endl     // the number of blocks in the block diagonal structure of the matrices
+	<< " "<<p.C.size1()<<" = bLOCKsTRUCT" << endl     // The third line after the comments contains a vector of numbers that give the sizes of the individual blocks
+	                                                  // Negative numbers may be used to indicate that a block is actually a diagonal submatrix.
 	<< "{";
-	if (p.b.size() > 0)
+	if (p.b.size() > 0)                               // The fourth line after the comments contains the objective function vector c
 		o << p.b(0);
 	for (unsigned int i=1;i<p.b.size();i++)
 		o << ", " << p.b(i);
 	o   << "}"                                << endl;
+
+	/* sparse format:
+	 * The remaining lines of the file contain entries in the constraint
+	 * matrices, with one entry per line.  The format for each line is 
+	 *  
+	 *    <matno> <blkno> <i> <j> <entry>
+	 *     
+	 *     Here <matno> is the number of the matrix to which this entry belongs, 
+	 *     <blkno> specifies the block within this matrix, <i> and <j> specify a
+	 *     location within the block, and <entry> gives the value of the entry in
+	 *     the matrix.  Note that since all matrices are assumed to be symmetric, 
+	 *     only entries in the upper triangle of a matrix are given.  
+	 * non-sparse: 
+	 * all matrices in order.
+	 */
 	sdpaPrintMat(o,p.C);
 	// TODO: Identity-Matrix could be handled separatly (just specify diag)
 	for (unsigned int f=0;f<p.F.size();f++) {
@@ -99,7 +117,15 @@ void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 {
 	char cmd[255];
 	sprintf(cmd,"%s -p %s -dd %s -o %s 2>&1 > /dev/null",SDPA_BINARY,param,in,out);
-	system(cmd);
+	int res = system(cmd);
+	if(res == -1)
+		throw runtime_error(std::string("SDPAWrapper could not execute sdpa."));
+	if(WIFSIGNALED(res) &&
+			(WTERMSIG(res) == SIGINT || WTERMSIG(res) == SIGQUIT)){
+		cerr << "Got interrupt, calling exit." << endl;
+		exit(0);
+	}
+	L("Done running cmd");
 }
 
 SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
@@ -107,7 +133,8 @@ SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
 	L("SDPAWrapper::operator()\n");
 	const char* fn_in  = "/tmp/x.dat";
 	const char* fn_out = "/tmp/x.out";
-	const char* fn_par = gCfg().getString("sdpa-param-file").c_str();
+	//const char* fn_par = gCfg().getString("sdpa-param-file").c_str();
+	const char* fn_par = mParamFile.c_str();
 	writeSDPAInputFile(p,fn_in);
 	runSDPA(fn_in,fn_out,fn_par);
 	AnswerT ret;

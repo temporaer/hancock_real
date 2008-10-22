@@ -33,6 +33,10 @@ You will need at least one of the following:
 
    more help is available here:
    http://homepage.mac.com/klabtitech/sdpa-homepage/files/sdpa.7.1.1.manual.20080618.pdf
+4) SDPLR
+   again, you will need ATLAS/BLAS
+   $ cd src/third_party/SDPLR-1.02
+   $ make
 
 Finally, run cmake, it will detect the installed libraries 
 and compile the wrappers as needed.
