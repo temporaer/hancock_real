@@ -51,6 +51,8 @@ include_directories ( ${Boost_INCLUDE_DIRS} configuration )
 # uBlas Backend
 FIND_PACKAGE(BLAS REQUIRED)
 FIND_PACKAGE(LAPACK REQUIRED)
+include_directories ( ${LAPACK_INCLUDE_DIRS} )
+link_directories    ( ${LAPACK_LIBRARY_DIRS} )
 
 # Nana
 find_package( Nana )
@@ -113,6 +115,7 @@ add_executable( hrmain main.cpp )
 target_link_libraries(hrmain 
 	${Boost_LIBRARIES}  
 	${NANA_LIBRARIES} 
+	${LAPACK_LIBRARIES} 
 	dl
 	hrconfig 
 	seriation_gen )
