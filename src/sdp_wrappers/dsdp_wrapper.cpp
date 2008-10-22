@@ -1,18 +1,15 @@
-/*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Wed Oct 22 08:00 PM 2008 CEST
- */
-
-#include <fstream>
+#include <boost/numeric/ublas/symmetric.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/vector.hpp>
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
-#include <nana.h>
+#include <fstream>
 #include <configuration.hpp>
 #include <sdp_prob.hpp>
 #include <dsdp_wrapper.hpp>
 #include <dsdp/dsdp5.h>
 #include <factory/factory.h>
+#include <nana.h>
 using namespace std;
 using namespace boost::numeric;
 
@@ -59,7 +56,7 @@ void DSDPWrapper::Impl::writeSDPASparseInputFile(const SDPProb& p, const char* f
 	}
 }
 
-bool readDSDPOutputFile(const char* out, DSDPWrapper::AnswerT& ret){
+bool readDSDPOutputFile(const SDPProb& p, const char* out, DSDPWrapper::AnswerT& X){
 	ifstream is(out);
 	string line;
 	getline(is,line);
@@ -67,13 +64,32 @@ bool readDSDPOutputFile(const char* out, DSDPWrapper::AnswerT& ret){
 
 	vector<string> strvec;
 	boost::split( strvec, line, boost::is_any_of(" ") );
-
+	
 	// convert strings to doubles
 	int i=0;
-	ret = DSDPWrapper::AnswerT(strvec.size());
+#if 0
+	ublas::vector<double> y(strvec.size());
 	for(vector<string>::iterator it = strvec.begin();it!=strvec.end();it++,i++){
-		L(" --> %s \n", it->c_str());
-		ret(i) = boost::lexical_cast<double>(*it);
+		y(i) = boost::lexical_cast<double>(*it);
+	}
+#endif
+
+	X = SDPWrapper::AnswerT(p.C.size1(),p.C.size2()); 
+	boost::numeric::ublas::symmetric_adaptor<SDPWrapper::AnswerT,
+	boost::numeric::ublas::upper > X_(X);
+	int n,b,j;
+	string num;
+	while(!is.eof()){
+		is >> n;
+		
+		if(n==1) {getline(is,line); continue;}
+		I(n==2);
+		is >> b; // block
+		is >> i; // idx
+		is >> j; // idx
+		is >> num;
+		X(i-1,j-1) = boost::lexical_cast<double>(num);
+		X(j-1,i-1) = X(i-1,j-1);
 	}
 	return true;
 }
@@ -82,19 +98,18 @@ void runDSDP(const char* in, const char* out)
 {
 	char cmd[255];
 	sprintf(cmd,"%s %s -save %s 2>&1 > /dev/null",DSDP_BINARY,in,out);
-	L("Executing cmd: %s",cmd);
 	system(cmd);
 }
 
 
 DSDPWrapper::AnswerT DSDPWrapper::Impl::operator()(const SDPProb& p){
-	L("DSDPWrapper::operator()\n");
+	//L("DSDPWrapper::operator()\n");
 	const char* fn_in  = "/tmp/x.dat";
 	const char* fn_out = "/tmp/x.out";
 	writeSDPASparseInputFile(p,fn_in);
 	runDSDP(fn_in,fn_out);
 	DSDPWrapper::AnswerT ret;
-	readDSDPOutputFile(fn_out,ret);
+	readDSDPOutputFile(p, fn_out,ret);
 	return ret;
 }
 
@@ -106,7 +121,7 @@ DSDPWrapper::DSDPWrapper()
 }
 DSDPWrapper::~DSDPWrapper()
 {
-    L("Destroying DSDPWrapper");
+    //L("Destroying DSDPWrapper");
 }
 DSDPWrapper::AnswerT DSDPWrapper::operator()(const SDPProb& prob)
 {

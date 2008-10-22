@@ -1,11 +1,10 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Wed Oct 22 06:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 11:00 PM 2008 CEST
  */
 #include <exception>
 #include <fstream>
 #include <signal.h>
 #include <cstdlib>
-#include <nana.h>
 #include <sdp_prob.hpp>
 #include <sdpa_wrapper.hpp>
 #include <factory/factory.h>
@@ -15,6 +14,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <configuration.hpp>
+#include <nana.h>
 
 #ifndef SDPA_BINARY
 #  error "You need to define SDPA_BINARY, pointing me to where sdpa resides"
@@ -81,7 +81,7 @@ void SDPAWrapper::writeSDPAInputFile(const SDPProb& p, const char* fn)
 	    sdpaPrintMat(o,m);
 	}
 }
-bool SDPAWrapper::readSDPAOutputFile(const char*out, AnswerT& ret)
+bool SDPAWrapper::readSDPAOutputFile(const SDPProb& p,const char*out, AnswerT& X)
 {
 	ifstream is(out);
 	string line;
@@ -104,19 +104,56 @@ bool SDPAWrapper::readSDPAOutputFile(const char*out, AnswerT& ret)
 	boost::split( strvec, line, boost::is_any_of(",") );
 
 	// convert strings to doubles
+#if 0
 	int i=0;
-	ret = AnswerT(strvec.size());
+	boost::numeric::ublas::vector<double> y = boost::numeric::ublas::vector<double>(strvec.size());
 	for(vector<string>::iterator it = strvec.begin();it!=strvec.end();it++,i++){
-		ret(i) = boost::lexical_cast<double>(*it);
+		y(i) = boost::lexical_cast<double>(*it);
 	}
+#endif
+
+	found = false;
+	while( !found && getline(is,line) ){
+		string start ( line.substr(0,6) );
+		if( start == "yMat =" )
+			found = true;
+	}
+	if(found == false){
+		IP(found,"Could not parse SDPA output, yMat not found");
+		return false;
+	}
+	getline(is,line); // "{"
+
+	X = SDPWrapper::AnswerT(p.C.size1(),p.C.size2()); 
+	for(unsigned int i=0;i<X.size1();i++){
+		getline(is,line); 
+		boost::erase_all(line,"{");
+		boost::erase_all(line,"}");
+		vector<string> strvec;
+		boost::split( strvec, line, boost::is_any_of(",") );
+		int j=0;
+		for(vector<string>::iterator it = strvec.begin();it!=strvec.end();it++,j++){
+			boost::trim(*it);
+			if(it->length() < 1) continue;
+			X(i,j) = boost::lexical_cast<double>(*it);
+		}
+	}
+
 
 	return true;
 }
+
+void SDPAWrapper::configure()
+{
+	mParamFile = gCfg().get<string>("sdpa-param-file");
+}
+
 
 void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 {
 	char cmd[255];
 	sprintf(cmd,"%s -p %s -dd %s -o %s 2>&1 > /dev/null",SDPA_BINARY,param,in,out);
+	L("Exec Cmd: %s",cmd);
 	int res = system(cmd);
 	if(res == -1)
 		throw runtime_error(std::string("SDPAWrapper could not execute sdpa."));
@@ -138,7 +175,7 @@ SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
 	writeSDPAInputFile(p,fn_in);
 	runSDPA(fn_in,fn_out,fn_par);
 	AnswerT ret;
-	readSDPAOutputFile(fn_out,ret);
+	readSDPAOutputFile(p,fn_out,ret);
 	return ret;
 }
 SDPAWrapper::~SDPAWrapper()
