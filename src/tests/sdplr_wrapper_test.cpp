@@ -21,7 +21,7 @@ struct Fixture{
 	Mat mA1;
 	Mat mA2;
 	Vec mb;
-	Vec mAnswer;
+	SDPWrapper::AnswerT mAnswer;
 	SDPProb mProb;
 	
 	Fixture()
@@ -50,15 +50,25 @@ struct Fixture{
 			{0,0,1,0,5,0,0},
 			{0,0,0,0,0,0,0},
 			{0,0,0,0,0,0,1}};
+		double X[7][7] = {
+			{0.125, 0.125, 0, 0, 0, 0, 0},
+			{0.125, 0.125, 0, 0, 0, 0, 0},
+			{0, 0, 0.667, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0},
+			{0, 0, 0, 0, 0, 0, 0}};
 
 		mC  = Mat(7,7);
 		mA1 = Mat(7,7);
 		mA2 = Mat(7,7);
+		mAnswer = SDPWrapper::AnswerT(7,7);
 		for(int i=0;i<7;i++)
 			for(int j=0;j<7;j++){
 				mC(i,j) = C[i][j];
 				mA1(i,j) = A1[i][j];
 				mA2(i,j) = A2[i][j];
+				mAnswer(i,j) = X[i][j];
 			}
 		mb = Vec(2);
 		mb(0) = 1;
@@ -68,10 +78,6 @@ struct Fixture{
 		mProb.C = mC;
 		mProb.F.push_back(mA1);
 		mProb.F.push_back(mA2);
-
-		mAnswer = Vec(2);
-		mAnswer(0) = 0.75;
-		mAnswer(1) = 1.0;
 	}
 	~Fixture(){
 	}
@@ -85,9 +91,12 @@ BOOST_AUTO_TEST_CASE( testSDPLR )
 	SDPLRWrapper* solv = (SDPLRWrapper*) wrap.get();
 	solv->setParamFile("../sdplr.params");
 	SDPWrapper::AnswerT ret = (*solv)(mProb);
-	BOOST_REQUIRE_EQUAL(ret.size(),mAnswer.size());
-	for(int i=0;i<ret.size(); i++){
-		BOOST_CHECK_CLOSE(ret(i),mAnswer(i),0.01);
+	BOOST_REQUIRE_EQUAL(ret.size1(),mAnswer.size1());
+	BOOST_REQUIRE_EQUAL(ret.size2(),mAnswer.size2());
+	for(int i=0;i<ret.size1(); i++){
+		for(int j=i;j<ret.size2(); j++){
+			BOOST_CHECK_SMALL(ret(i,j)-mAnswer(i,j),0.001);
+		}
 	}
 }
 
