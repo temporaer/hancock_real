@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:57:46 AM
- *       Last Change: Wed Oct 22 05:00 PM 2008 CEST
+ *       Last Change: Wed Oct 22 11:00 PM 2008 CEST
  */
 
 #ifndef __SDPA_WRAPPER_HPP__
@@ -12,6 +12,7 @@ class SDPAWrapper: public SDPWrapper
         //! solve an @see SDPProb SDP-problem
         virtual AnswerT operator()(const SDPProb&);
         virtual ~SDPAWrapper();
+		virtual void configure();
 
 		inline void setParamFile(const std::string& s){mParamFile=s;}
 	private:
@@ -24,9 +25,10 @@ class SDPAWrapper: public SDPWrapper
         void writeSDPAInputFile(const SDPProb& p, const char* in);
 
         /*! Read the output of sdpa.
+         *  \param p   the SDP problem (to get dimension of solution)
          *  \param out the name of the sdpa-output file to read
          *  \param ret the vector where we should record the answer */
-        bool readSDPAOutputFile(const char* out, AnswerT& ret);
+        bool readSDPAOutputFile(const SDPProb& p, const char* out, AnswerT& ret);
 
         /*! Run the sdpa-binary.
          *  \param in where the problem was written to
