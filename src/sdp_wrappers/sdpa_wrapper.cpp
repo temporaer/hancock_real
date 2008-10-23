@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Wed Oct 22 11:00 PM 2008 CEST
+ *       Last Change: Thu Oct 23 09:00 AM 2008 CEST
  */
 #include <exception>
 #include <fstream>
@@ -167,7 +167,8 @@ void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 
 SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
 {
-	L("SDPAWrapper::operator()\n");
+	if(!mParamFile.length()>0)
+		throw invalid_argument("SDPA-Wrapper: you need to set ParamFile!");
 	const char* fn_in  = "/tmp/x.dat";
 	const char* fn_out = "/tmp/x.out";
 	//const char* fn_par = gCfg().getString("sdpa-param-file").c_str();
