@@ -1,16 +1,17 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Thu Oct 16 04:00 PM 2008 CEST
+ *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
  */
 
-#include <nana.h>
 #include <sdp_seriation_prob_gen.hpp>
 #include <sdp_prob.hpp>
-//#include <boost/numeric/ublas/io.hpp>
+#include <boost/numeric/ublas/io.hpp>
+#include <nana.h>
+#undef C
 
 namespace ublas = boost::numeric::ublas;
 using namespace std;
 
-SDPSeriationProbGen::SDPSeriationProbGen(const AdjMatT&a)
+SDPSeriationProbGen::SDPSeriationProbGen(boost::shared_ptr<AdjMatT>a)
 	: mAdjMat(a)
 {
 }
@@ -40,15 +41,27 @@ void SDPSeriationProbGen::operator()(SDPProb& prob)
 {
 	using ublas::identity_matrix;
 	typedef SDPProb::MatT Matrix ;
+	
+	Matrix& adj = *mAdjMat;
 
-	I(mAdjMat.size1() == mAdjMat.size2());
+	I(adj.size1() == adj.size2());
 
-	int n = mAdjMat.size1();
+	int n = adj.size1();
 
 	calcOmega(n);
 
 	// C = F_0
-	prob.C = prod(mOmega_1_2, Matrix(prod(mAdjMat,mOmega_m_1_2)));
+	prob.C = prod(mOmega_1_2, Matrix(prod(adj,mOmega_m_1_2)));
+
+#ifndef NDEBUG
+	for(int i=0;i<n;i++)
+		for(int j=0;j<n;j++){
+			I(mOmega_1_2(i,j) == mOmega_1_2(i,j));
+			I(mOmega_m_1_2(i,j) == mOmega_m_1_2(i,j));
+			I(adj(i,j) == adj(i,j));
+			I(prob.C(i,j) == prob.C(i,j));
+		}
+#endif
 
 	// F_1
 	identity_matrix<double> Id(n);

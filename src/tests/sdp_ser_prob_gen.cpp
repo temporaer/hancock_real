@@ -6,13 +6,14 @@
 #include <sdp_seriation_prob_gen.hpp>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/numeric/ublas/io.hpp>
-#include <memory>
+#include <boost/shared_ptr.hpp>
 using namespace std;
+using namespace boost;
 
 struct Fixture{
 	const int n;
-	auto_ptr<SDPSeriationProbGen> sdpserprobgen;
-	auto_ptr<SDPSeriationProbGen::AdjMatT> am;
+	shared_ptr<SDPSeriationProbGen> sdpserprobgen;
+	shared_ptr<SDPSeriationProbGen::AdjMatT> am;
 	
 	Fixture()
 		:  n(6)
@@ -23,7 +24,7 @@ struct Fixture{
 			{
 				(*am)(i,j) = ((i+j)%2>0)?1.0:0.0;
 			}
-		sdpserprobgen.reset(new SDPSeriationProbGen(*am));
+		sdpserprobgen.reset(new SDPSeriationProbGen(am));
 	}
 	~Fixture(){
 	}
