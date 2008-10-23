@@ -1,7 +1,3 @@
-/*       Created   :  10/06/2008 12:57:46 AM
- *       Last Change: Wed Oct 22 08:00 PM 2008 CEST
- */
-
 #ifndef __DSDP_WRAPPER_HPP__
 #define __DSDP_WRAPPER_HPP__
 #include <boost/shared_ptr.hpp>
