@@ -30,8 +30,10 @@ template<class T>
 void sdpaSparsePrintMat(ofstream& o,int n, const T& m)
 {
 	for(unsigned int i=0;i<m.size1();i++)
-		for(unsigned int j=i;j<m.size2();j++)
+		for(unsigned int j=i;j<m.size2();j++){
+			I(m(i,j) == m(i,j)); // check for NaN
 			o << n << " 1 " << (i+1) << " " << (j+1) << " " << m(i,j)<< endl;
+		}
 }
 
 
@@ -50,6 +52,7 @@ void DSDPWrapper::Impl::writeSDPASparseInputFile(const SDPProb& p, const char* f
 
 	sdpaSparsePrintMat(o,0, p.C);
 	// TODO: Identity-Matrix could be handled separatly (just specify diag)
+	//       for example, specialize sdpaSparsePrintMat(...) for identity-matrix
 	for (unsigned int f=0;f<p.F.size();f++) {
 	    const SDPProb::MatT& m = p.F[f];
 	    sdpaSparsePrintMat(o,f+1,m);
@@ -83,7 +86,7 @@ bool readDSDPOutputFile(const SDPProb& p, const char* out, DSDPWrapper::AnswerT&
 		is >> n;
 		
 		if(n==1) {getline(is,line); continue;}
-		I(n==2);
+		IP(n==2, "Syntax Error in DSDP Output File!");
 		is >> b; // block
 		is >> i; // idx
 		is >> j; // idx
@@ -98,6 +101,7 @@ void runDSDP(const char* in, const char* out)
 {
 	char cmd[255];
 	sprintf(cmd,"%s %s -save %s 2>&1 > /dev/null",DSDP_BINARY,in,out);
+	L("Running Cmd: %s\n",cmd);
 	system(cmd);
 }
 
