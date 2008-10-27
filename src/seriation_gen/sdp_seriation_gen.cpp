@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 10:25:05 PM
- *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
+ *       Last Change: Mon Oct 27 07:00 PM 2008 CET
  */
 #include <boost/numeric/ublas/matrix_proxy.hpp>
 #include <sdp_prob.hpp>
@@ -38,6 +38,15 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 
 	// Solve the SDP-Problem using an SDP Wrapper
 	SDPWrapper::AnswerT X = (*mSDPWrapper)(prob);
+
+	cout << "Y = [ ";
+	for(unsigned int i=0;i<X.size1();i++){
+		for(unsigned int j=0;j<X.size2();j++){
+			cout << X(i,j) << " ";
+		}
+		cout << " ; ";
+	}
+	cout << "]; \n";
 	
 	// Make sure we got the right thing: tr(EX)=1
 #ifndef NDEBUG
@@ -55,10 +64,28 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 
 	// decompose X = V*V'
 	SDPWrapper::AnswerT& V = X;
-	ulapack::chol_checked_inplace(V, true);
+	if(!ulapack::chol_checked_inplace(V, true))
+		throw runtime_error("Could not cholesky-decompose matrix, seems not to be positive-semidefinite.");
 
+	cout << "V = [ ";
+	for(unsigned int i=0;i<V.size1();i++){
+		for(unsigned int j=0;j<V.size2();j++){
+			cout << V(i,j) << " ";
+		}
+		cout << " ; ";
+	}
+	cout << "]; \n";
 
 	// random hyperplane technique
+	for(int iter=0;iter<1000;iter++){
+
+		// generate unit-vector
+		ublas::vector<double> v;
+		generate(v.begin(), v.end(), rand); 
+		v /= ublas::norm_2(v);
+		
+	}
+	
 
 	SeriationT ret;
 	return ret;

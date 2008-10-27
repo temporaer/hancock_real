@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Thu Oct 23 09:00 AM 2008 CEST
+ *       Last Change: Fri Oct 24 10:00 AM 2008 CEST
  */
 #include <exception>
 #include <fstream>
@@ -153,8 +153,9 @@ void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 {
 	char cmd[255];
 	sprintf(cmd,"%s -p %s -dd %s -o %s 2>&1 > /dev/null",SDPA_BINARY,param,in,out);
-	L("Exec Cmd: %s",cmd);
+	L("Exec Cmd: %s...",cmd);
 	int res = system(cmd);
+	L("done.");
 	if(res == -1)
 		throw runtime_error(std::string("SDPAWrapper could not execute sdpa."));
 	if(WIFSIGNALED(res) &&
@@ -162,7 +163,6 @@ void SDPAWrapper::runSDPA(const char* in, const char* out, const char* param)
 		cerr << "Got interrupt, calling exit." << endl;
 		exit(0);
 	}
-	L("Done running cmd");
 }
 
 SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
@@ -181,7 +181,6 @@ SDPAWrapper::AnswerT SDPAWrapper::operator()(const SDPProb&p)
 }
 SDPAWrapper::~SDPAWrapper()
 {
-	L("Destroying SDPAWrapper\n");
 }
 
 namespace
