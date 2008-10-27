@@ -1,8 +1,9 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Thu Oct 23 11:00 AM 2008 CEST
+ *       Last Change: Fri Oct 24 10:00 AM 2008 CEST
  */
 
 #include <fstream>
+#include <signal.h>
 #include <csdp_wrapper.hpp>
 #include <factory/factory.h>
 #include <boost/numeric/ublas/matrix.hpp>
@@ -100,8 +101,16 @@ void runCSDP(const char* in, const char* out)
 {
 	char cmd[255];
 	sprintf(cmd,"%s %s %s 2>&1 > /dev/null",CSDP_BINARY,in,out);
-	L("Running Cmd: %s\n",cmd);
-	system(cmd);
+	L("Exec Cmd: %s...",cmd);
+	int res = system(cmd);
+	L("done.");
+	if(res == -1)
+		throw runtime_error(std::string("CSDPWrapper could not execute csdp."));
+	if(WIFSIGNALED(res) &&
+			(WTERMSIG(res) == SIGINT || WTERMSIG(res) == SIGQUIT)){
+		cerr << "Got interrupt, calling exit." << endl;
+		exit(0);
+	}
 }
 
 

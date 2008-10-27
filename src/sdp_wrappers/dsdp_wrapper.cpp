@@ -4,6 +4,7 @@
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <fstream>
+#include <signal.h>
 #include <configuration.hpp>
 #include <sdp_prob.hpp>
 #include <dsdp_wrapper.hpp>
@@ -101,8 +102,16 @@ void runDSDP(const char* in, const char* out)
 {
 	char cmd[255];
 	sprintf(cmd,"%s %s -save %s 2>&1 > /dev/null",DSDP_BINARY,in,out);
-	L("Running Cmd: %s\n",cmd);
-	system(cmd);
+	L("Exec Cmd: %s...",cmd);
+	int res = system(cmd);
+	L("done.");
+	if(res == -1)
+		throw runtime_error(std::string("DSDPWrapper could not execute dsdp."));
+	if(WIFSIGNALED(res) &&
+			(WTERMSIG(res) == SIGINT || WTERMSIG(res) == SIGQUIT)){
+		cerr << "Got interrupt, calling exit." << endl;
+		exit(0);
+	}
 }
 
 

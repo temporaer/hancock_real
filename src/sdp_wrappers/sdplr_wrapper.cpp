@@ -1,4 +1,5 @@
 #include <fstream>
+#include <signal.h>
 #include <cstdlib>
 #include <sdp_prob.hpp>
 #include <sdplr_wrapper.hpp>
@@ -29,8 +30,8 @@ void sdplrPrintMat(ofstream& o,int n, const T& m)
 	// - "s" for sparse
 	// - number of entries
 	o << n << " 1 s " << (m.size1()*(m.size1()+1)/2) << endl;
-	for(int i=0;i<m.size1();i++)
-		for(int j=i;j<m.size2();j++)
+	for(unsigned int i=0;i<m.size1();i++)
+		for(unsigned int j=i;j<m.size2();j++)
 			o << i+1 << " " << j+1 << " " << m(i,j)<< endl;
 }
 /*!
@@ -39,8 +40,8 @@ void sdplrPrintMat(ofstream& o,int n, const T& m)
 template<class T>
 void sdpaSparsePrintMat(ofstream& o,int n, const T& m)
 {
-	for(int i=0;i<m.size1();i++)
-		for(int j=i;j<m.size2();j++)
+	for(unsigned int i=0;i<m.size1();i++)
+		for(unsigned int j=i;j<m.size2();j++)
 			o << n <<" 1 " << i+1 << " " << j+1 << " " << m(i,j)<< endl;
 }
 
@@ -113,8 +114,16 @@ void SDPLRWrapper::runSDPLR(const char* in, const char* out, const char* param)
 	char cmd[255];
 	// use dummy for soln_in as described in manual
 	sprintf(cmd,"%s %s %s soln_in %s 2>&1 > /dev/null",SDPLR_BINARY,in,param,out);
-	L("Executing cmd: %s",cmd);
-	system(cmd);
+	L("Exec Cmd: %s...",cmd);
+	int res = system(cmd);
+	L("done.");
+	if(res == -1)
+		throw runtime_error(std::string("SDPAWrapper could not execute sdpa."));
+	if(WIFSIGNALED(res) &&
+			(WTERMSIG(res) == SIGINT || WTERMSIG(res) == SIGQUIT)){
+		cerr << "Got interrupt, calling exit." << endl;
+		exit(0);
+	}
 }
 
 SDPLRWrapper::AnswerT SDPLRWrapper::operator()(const SDPProb&p)
