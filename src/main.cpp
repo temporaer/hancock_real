@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
+ *       Last Change: Mon Oct 27 10:00 PM 2008 CET
  */
 
 #include <dlfcn.h>
@@ -23,13 +23,26 @@ int main(int argc, char* argv[]){
 	
 	gCfg().parsecfg(argc,argv);
 
-	int n=100;
+	int n=50;
 	typedef matrix<double,column_major> AdjMatCT;
 	shared_ptr<AdjMatCT> adjmat_ptr(new AdjMatCT(n,n));
 	AdjMatCT& adjmat = *adjmat_ptr;
+	srand48(5);
 	for(int i=0;i<n;i++)
-        for(int j=0;j<n;j++)
-            adjmat(i,j) = ((i+j)%2>0)?1:0.0;
+        for(int j=i;j<n;j++){
+            adjmat(i,j) = drand48()>0.6;
+            adjmat(j,i) = adjmat(i,j);
+		}
+	
+	cout<<"A = [ ";
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cout << adjmat(i,j) <<" ";
+		}
+		cout << "; ";
+	}
+	cout << " ]; \n";
+
 
 	SDPSeriationGen walkgen;
 	string sdp_wrapper_name          = gCfg().getString("ser-sdp-wrapper");
