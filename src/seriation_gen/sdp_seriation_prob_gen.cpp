@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
+ *       Last Change: Mon Oct 27 05:00 PM 2008 CET
  */
 
 #include <sdp_seriation_prob_gen.hpp>
@@ -51,7 +51,8 @@ void SDPSeriationProbGen::operator()(SDPProb& prob)
 	calcOmega(n);
 
 	// C = F_0
-	prob.C = prod(mOmega_1_2, Matrix(prod(adj,mOmega_m_1_2)));
+	// negative, since we want to _minimize_ instead of maximize as in normal SDP
+	prob.C = -prod(mOmega_1_2, Matrix(prod(adj,mOmega_m_1_2)));
 
 #ifndef NDEBUG
 	for(int i=0;i<n;i++)
