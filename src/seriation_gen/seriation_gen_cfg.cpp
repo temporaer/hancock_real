@@ -1,5 +1,5 @@
 /*       Created   :  10/07/2008 09:04:23 PM
- *       Last Change: Tue Oct 07 09:00 PM 2008 CEST
+ *       Last Change: Mon Oct 27 11:00 PM 2008 CET
  */
 
 #include <configuration.hpp>
@@ -16,11 +16,11 @@ struct SeriationGenCfg{
 SeriationGenCfg::SeriationGenCfg(){
 	options_description od("Seriation Generator Options");
 	od.add_options()
-		("ser-gen,g", value<string>()->default_value("SDP"), "How to generate seriation")
-		("ser-sdp-wrapper,w",value<string>()->default_value("SDPAWrapper"),"Which SDP-Solver to use")
+		("ser-gen.method,g", value<string>()->default_value("SDP"), "How to generate seriation")
+		("ser-gen.sdp-wrapper,w",value<string>()->default_value("SDPAWrapper"),"Which SDP-Solver to use")
 		;
 	gCfg().addModuleOptions(od);
-	gCfg().dependent_options("ser-gen","ser-sdp-wrapper");
+	gCfg().dependent_options("ser-gen.method","ser-gen.sdp-wrapper");
 }
 namespace{
 	SeriationGenCfg _tmp;

@@ -88,10 +88,12 @@ IF(SDPLR_BINARY)
 ENDIF(SDPLR_BINARY)
 
 # subdirs: sub-libs
+ADD_SUBDIRECTORY( adjmat_gen )
 ADD_SUBDIRECTORY( seriation_gen )
 ADD_SUBDIRECTORY( configuration )
 ADD_SUBDIRECTORY( sdp_wrappers )
 include_directories( 
+  ${CMAKE_SOURCE_DIR}/adjmat_gen 
   ${CMAKE_SOURCE_DIR}/seriation_gen 
   ${CMAKE_SOURCE_DIR}/configuration 
   ${CMAKE_SOURCE_DIR}/sdp_wrappers )
@@ -119,7 +121,9 @@ target_link_libraries(hrmain
 	${LAPACK_LIBRARIES} 
 	dl
 	hrconfig 
-	seriation_gen )
+	seriation_gen 
+	adjmat_gen 
+	)
 
 #add_library( hello SHARED hello.cpp )
 

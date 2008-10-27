@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Mon Oct 27 10:00 PM 2008 CET
+ *       Last Change: Mon Oct 27 11:00 PM 2008 CET
  */
 
 #include <dlfcn.h>
@@ -10,6 +10,8 @@
 
 #include <sdp_seriation_gen.hpp>
 #include <sdp_wrapper.hpp>
+
+#include <random_adjmat_gen.hpp>
 
 #include <boost/numeric/ublas/matrix.hpp>
 #include <boost/shared_ptr.hpp>
@@ -23,29 +25,12 @@ int main(int argc, char* argv[]){
 	
 	gCfg().parsecfg(argc,argv);
 
-	int n=50;
-	typedef matrix<double,column_major> AdjMatCT;
-	shared_ptr<AdjMatCT> adjmat_ptr(new AdjMatCT(n,n));
-	AdjMatCT& adjmat = *adjmat_ptr;
-	srand48(5);
-	for(int i=0;i<n;i++)
-        for(int j=i;j<n;j++){
-            adjmat(i,j) = drand48()>0.6;
-            adjmat(j,i) = adjmat(i,j);
-		}
-	
-	cout<<"A = [ ";
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
-			cout << adjmat(i,j) <<" ";
-		}
-		cout << "; ";
-	}
-	cout << " ]; \n";
-
+	RandomAdjMatGen matgen;
+	matgen.configure();
+	shared_ptr<RandomAdjMatGen::AdjMatT> adjmat_ptr(matgen());
 
 	SDPSeriationGen walkgen;
-	string sdp_wrapper_name          = gCfg().getString("ser-sdp-wrapper");
+	string sdp_wrapper_name          = gCfg().getString("ser-gen.sdp-wrapper");
 	auto_ptr<SDPWrapper> sdp_wrapper = genericFactory<SDPWrapper>::instance().create(sdp_wrapper_name);
 	sdp_wrapper->configure();
 	walkgen.setSDPWrapper( sdp_wrapper );
