@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Tue Oct 28 12:00 AM 2008 CET
+ *       Last Change: Tue Oct 28 01:00 AM 2008 CET
  */
 
 #include <fstream>
@@ -103,7 +103,7 @@ void runCSDP(const char* in, const char* out)
 	sprintf(cmd,"%s %s %s 2>&1 > /dev/null",CSDP_BINARY,in,out);
 	L("Exec Cmd: %s...",cmd);
 	int res = system(cmd);
-	L("done.");
+	L("done.\n");
 	if(res == -1)
 		throw runtime_error(std::string("CSDPWrapper could not execute csdp."));
 	if(WIFSIGNALED(res) &&

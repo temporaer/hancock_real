@@ -104,7 +104,7 @@ void runDSDP(const char* in, const char* out)
 	sprintf(cmd,"%s %s -save %s 2>&1 > /dev/null",DSDP_BINARY,in,out);
 	L("Exec Cmd: %s...",cmd);
 	int res = system(cmd);
-	L("done.");
+	L("done.\n");
 	if(res == -1)
 		throw runtime_error(std::string("DSDPWrapper could not execute dsdp."));
 	if(WIFSIGNALED(res) &&
