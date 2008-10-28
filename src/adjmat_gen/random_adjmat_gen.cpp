@@ -2,6 +2,7 @@
 #include <iostream>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <configuration.hpp>
+#include <nana.h>
 
 using namespace boost;
 using namespace std;
@@ -15,6 +16,7 @@ void RandomAdjMatGen::configure()
 
 shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 {
+	L("Generating Random AdjMat with n=%d p=%2.2f w=%d",mMatrixSize,mConnectionProb,mWeightedEdges);
 	shared_ptr<AdjMatT> adjmat_ptr(new AdjMatT(mMatrixSize,mMatrixSize));
 	
 	AdjMatT& adjmat = *adjmat_ptr;
@@ -23,24 +25,24 @@ shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 	for(int i=0;i<n;i++)
         for(int j=i;j<n;j++){
 			if(mWeightedEdges){
-				if(drand48()<mConnectionProb)
+				if(drand48()>mConnectionProb)
 					adjmat(i,j) = 0;
 				else
 					adjmat(i,j) = drand48();
 			}else{
-				adjmat(i,j) = drand48()>mConnectionProb;
+				adjmat(i,j) = drand48()<mConnectionProb;
 			}
             adjmat(j,i) = adjmat(i,j);
 		}
 	
-	cout<<"A = [ ";
-	for(int i=0;i<n;i++){
-		for(int j=0;j<n;j++){
-			cout << adjmat(i,j) <<" ";
-		}
-		cout << "; ";
-	}
-	cout << " ]; \n";
+//	cout<<"A = [ ";
+//	for(int i=0;i<n;i++){
+//		for(int j=0;j<n;j++){
+//			cout << adjmat(i,j) <<" ";
+//		}
+//		cout << "; ";
+//	}
+//	cout << " ]; \n";
 	return adjmat_ptr;
 }
 
