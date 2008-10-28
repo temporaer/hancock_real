@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Mon Oct 27 05:00 PM 2008 CET
+ *       Last Change: Tue Oct 28 01:00 AM 2008 CET
  */
 
 #include <sdp_seriation_prob_gen.hpp>
@@ -27,12 +27,12 @@ void SDPSeriationProbGen::calcOmega(int n){
 //	mOmega(n-1,n-1) = 1;
 
 	// omega^(1/2)
-	mOmega_1_2 = Matrix( sqrt(2) * identity_matrix<double>(n) );
+	mOmega_1_2 = OmegaT( sqrt(2) * identity_matrix<double>(n) );
 	mOmega_1_2(0,0)     = 1;
 	mOmega_1_2(n-1,n-1) = 1;
 
 	// omega^(-1/2)
-	mOmega_m_1_2 = Matrix( (1.0/sqrt(2)) * identity_matrix<double>(n) );
+	mOmega_m_1_2 = OmegaT( (1.0/sqrt(2)) * identity_matrix<double>(n) );
 	mOmega_m_1_2(0,0)     = 1;
 	mOmega_m_1_2(n-1,n-1) = 1;
 }
@@ -57,8 +57,10 @@ void SDPSeriationProbGen::operator()(SDPProb& prob)
 #ifndef NDEBUG
 	for(int i=0;i<n;i++)
 		for(int j=0;j<n;j++){
-			I(mOmega_1_2(i,j) == mOmega_1_2(i,j));
-			I(mOmega_m_1_2(i,j) == mOmega_m_1_2(i,j));
+			if(i==j){
+				I(mOmega_1_2(i,j) == mOmega_1_2(i,j));
+				I(mOmega_m_1_2(i,j) == mOmega_m_1_2(i,j));
+			}
 			I(adj(i,j) == adj(i,j));
 			I(prob.C(i,j) == prob.C(i,j));
 		}
