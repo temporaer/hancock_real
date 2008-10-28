@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:52:01 AM
- *       Last Change: Fri Oct 24 10:00 AM 2008 CEST
+ *       Last Change: Tue Oct 28 12:00 AM 2008 CET
  */
 
 #include <fstream>
@@ -134,7 +134,6 @@ CSDPWrapper::AnswerT CSDPWrapper::operator()(const SDPProb& prob)
 	return (*mImpl)(prob);
 }
 CSDPWrapper::~CSDPWrapper(){
-	L("Destroying CSDPWrapper\n");
 }
 
 namespace{

@@ -12,7 +12,6 @@ SDPWrapper::AnswerT SDPWrapper::operator()(const SDPProb&)
 	throw logic_error("Called SDPWrapper() w/o subclassing");
 }
 SDPWrapper::~SDPWrapper(){
-    L("Destroying SDPWrapper\n");
 }
 void SDPWrapper::configure()
 {
