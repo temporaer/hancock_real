@@ -16,7 +16,7 @@ void RandomAdjMatGen::configure()
 
 shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 {
-	L("Generating Random AdjMat with n=%d p=%2.2f w=%d",mMatrixSize,mConnectionProb,mWeightedEdges);
+	L("Generating Random AdjMat with n=%d p=%2.2f w=%d...",mMatrixSize,mConnectionProb,mWeightedEdges);
 	shared_ptr<AdjMatT> adjmat_ptr(new AdjMatT(mMatrixSize,mMatrixSize));
 	
 	AdjMatT& adjmat = *adjmat_ptr;
@@ -34,6 +34,7 @@ shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 			}
             adjmat(j,i) = adjmat(i,j);
 		}
+	L("done.\n");
 	
 //	cout<<"A = [ ";
 //	for(int i=0;i<n;i++){

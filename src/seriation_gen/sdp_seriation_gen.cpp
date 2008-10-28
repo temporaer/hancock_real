@@ -27,16 +27,17 @@ SDPSeriationGen::Impl::~Impl(){
 
 SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<AdjMatT> adj_ptr)
 {
+	L("Generating Seriation using SDP.\n");
 	AdjMatT& adj = *adj_ptr;
 	I(adj.size1() == adj.size2());
 	I(mSDPWrapper.get() != NULL);
 
-	// Generate the SDP-Problem
+	L("Generate the SDP-Problem\n");
 	SDPProb prob;
 	SDPSeriationProbGen sdp_probgen(adj_ptr);
 	sdp_probgen(prob);
 
-	// Solve the SDP-Problem using an SDP Wrapper
+	L("Solve the SDP-Problem using an SDP Wrapper\n");
 	SDPWrapper::AnswerT X = (*mSDPWrapper)(prob);
 
 //	cout << "Y = [ ";
@@ -49,8 +50,8 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 //	cout << "]; \n";
 	
 	unsigned int n = X.size1();
-	// Make sure we got the right thing: tr(EX)=1
 #ifndef NDEBUG
+	L("Make sure we got the right thing: tr(EX)=1\n");
 	using ublas::range;
 	using ublas::prod;
 	for(unsigned int i=0;i<prob.F.size();i++){
@@ -62,7 +63,7 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 	}
 #endif
 
-	// decompose X = V*V'
+	L("Decompose X = V*V'\n");
 	SDPWrapper::AnswerT& V = X;
 	if(!ulapack::chol_checked_inplace(V, true))
 		throw runtime_error("Could not cholesky-decompose matrix, seems not to be positive-semidefinite.");
@@ -76,10 +77,9 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 //	}
 //	cout << "]; \n";
 
-	// random hyperplane technique
+	L("Rank reduction using random hyperplanes\n");
 	ublas::vector<double> min_y;
 	float min_y_val = 1E6;
-	// TODO: intelligenter abbrechen
 	for(int iter=0;iter<10000;iter++){
 
 		// generate unit-vector
@@ -109,6 +109,7 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 	ublas::vector<double>::iterator it = max_element(x.begin(),x.end());
 	int idx = std::distance(x.begin(),it);
 
+	L("Determine Actual Path through Graph.\n");
 	for(unsigned int i=0;i<n;i++){
 		// mark as visited
 		done[idx] = false;
