@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:54:34 AM
- *       Last Change: Wed Oct 22 11:00 PM 2008 CEST
+ *       Last Change: Fri Oct 31 10:00 AM 2008 CET
  */
 
 #ifndef __SDP_WRAPPER_HPP__
@@ -11,7 +11,8 @@ class SDPProb;
 
 class SDPWrapper{
 	public:
-		typedef boost::numeric::ublas::matrix<double> AnswerT;
+		typedef boost::numeric::ublas::matrix<double,
+				boost::numeric::ublas::row_major> AnswerT;
 		virtual AnswerT operator()(const SDPProb&);
 		virtual void configure();
 		virtual ~SDPWrapper();
