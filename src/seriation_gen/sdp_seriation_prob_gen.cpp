@@ -1,5 +1,5 @@
 /*       Created   :  10/06/2008 12:36:07 AM
- *       Last Change: Tue Oct 28 01:00 AM 2008 CET
+ *       Last Change: Fri Oct 31 05:00 PM 2008 CET
  */
 
 #include <sdp_seriation_prob_gen.hpp>

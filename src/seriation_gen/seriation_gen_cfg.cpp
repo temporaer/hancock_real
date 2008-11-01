@@ -1,5 +1,5 @@
 /*       Created   :  10/07/2008 09:04:23 PM
- *       Last Change: Mon Oct 27 11:00 PM 2008 CET
+ *       Last Change: Tue Oct 28 05:00 PM 2008 CET
  */
 
 #include <configuration.hpp>
@@ -18,6 +18,7 @@ SeriationGenCfg::SeriationGenCfg(){
 	od.add_options()
 		("ser-gen.method,g", value<string>()->default_value("SDP"), "How to generate seriation")
 		("ser-gen.sdp-wrapper,w",value<string>()->default_value("SDPAWrapper"),"Which SDP-Solver to use")
+		("ser-gen.sdp-rand-plane-tries,t",value<int>()->default_value(10000),"How many random-hyperplane tries")
 		;
 	gCfg().addModuleOptions(od);
 	gCfg().dependent_options("ser-gen.method","ser-gen.sdp-wrapper");
