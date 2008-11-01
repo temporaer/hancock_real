@@ -1,5 +1,6 @@
 #include <random_adjmat_gen.hpp>
 #include <iostream>
+#include <fstream>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <configuration.hpp>
 #include <nana.h>
@@ -9,7 +10,10 @@ using namespace std;
 void RandomAdjMatGen::configure()
 {
 	this->setMatrixSize(gCfg().getInt("rand_adj_mat_gen.size"));
-	this->setConnectionProb(gCfg().getFloat("rand_adj_mat_gen.prob"));
+	this->setConnectionProb(
+			1.0/(mMatrixSize-1)
+			*gCfg().getFloat("rand_adj_mat_gen.out-degree")
+			);
 	this->setWeightedEdges(gCfg().getBool("rand_adj_mat_gen.weighted"));
 	this->setSeed(gCfg().getFloat("rand_adj_mat_gen.seed"));
 }
@@ -36,14 +40,15 @@ shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 		}
 	L("done.\n");
 	
-//	cout<<"A = [ ";
-//	for(int i=0;i<n;i++){
-//		for(int j=0;j<n;j++){
-//			cout << adjmat(i,j) <<" ";
-//		}
-//		cout << "; ";
-//	}
-//	cout << " ]; \n";
+	ofstream o("adjmat.dat");
+	o<<"A = [ ";
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			o << adjmat(i,j) <<" ";
+		}
+		o << "; ";
+	}
+	o << " ]; \n";
 	return adjmat_ptr;
 }
 
