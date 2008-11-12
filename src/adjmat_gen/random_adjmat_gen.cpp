@@ -1,6 +1,7 @@
 #include <random_adjmat_gen.hpp>
 #include <iostream>
 #include <fstream>
+#include <factory/factory.h>
 #include <boost/numeric/ublas/matrix.hpp>
 #include <configuration.hpp>
 #include <nana.h>
@@ -51,4 +52,10 @@ shared_ptr<RandomAdjMatGen::AdjMatT> RandomAdjMatGen::operator()()
 	o << " ]; \n";
 	return adjmat_ptr;
 }
+RandomAdjMatGen::~RandomAdjMatGen()
+{
+}
 
+namespace{
+	registerInFactory<AdjMatGen, RandomAdjMatGen> registerBase("RandomAdjMatGen");
+}
