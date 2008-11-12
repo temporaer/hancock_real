@@ -91,6 +91,7 @@ ENDIF(SDPLR_BINARY)
 
 # subdirs: sub-libs
 ADD_SUBDIRECTORY( tools )
+ADD_SUBDIRECTORY( actions )
 ADD_SUBDIRECTORY( adjmat_gen )
 ADD_SUBDIRECTORY( seriation_gen )
 ADD_SUBDIRECTORY( configuration )
@@ -98,6 +99,7 @@ ADD_SUBDIRECTORY( sdp_wrappers )
 include_directories( 
   ${CMAKE_SOURCE_DIR}/tools
   ${CMAKE_SOURCE_DIR}/adjmat_gen 
+  ${CMAKE_SOURCE_DIR}/actions
   ${CMAKE_SOURCE_DIR}/seriation_gen 
   ${CMAKE_SOURCE_DIR}/configuration 
   ${CMAKE_SOURCE_DIR}/sdp_wrappers )
