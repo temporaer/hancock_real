@@ -128,5 +128,6 @@ target_link_libraries(hrmain
 	dl
 	hrconfig 
 	hrtools
-	adjmat_gen 
+	adjmat_gen
+	seriation_gen
 	)
