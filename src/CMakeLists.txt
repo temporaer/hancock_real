@@ -128,12 +128,5 @@ target_link_libraries(hrmain
 	dl
 	hrconfig 
 	hrtools
-	seriation_gen 
 	adjmat_gen 
 	)
-
-#add_library( hello SHARED hello.cpp )
-
-# generate precompiled header for the library above
-#include_directories( ${CMAKE_CURRENT_BINARY_DIR})
-#add_precompiled_header( hello ${PROJECT_SOURCE_DIR}/hello.hpp )
