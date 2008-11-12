@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 10:25:05 PM
- *       Last Change: Fri Oct 31 05:00 PM 2008 CET
+ *       Last Change: Sun Nov 02 09:00 PM 2008 CET
  */
 #include <boost/numeric/ublas/matrix_proxy.hpp>
 #include <boost/numeric/ublas/io.hpp>
@@ -14,6 +14,7 @@
 #include <cholesky.hpp> // from third_party
 #include <arg_max.hpp>
 #include <boost/lambda/lambda.hpp>
+#include <cmath>
 #include <nana.h>
 #undef C
 
@@ -21,6 +22,8 @@ namespace l = boost::lambda;
 namespace lapack = boost::numeric::bindings::lapack;
 using namespace boost::numeric;
 using namespace std;
+
+double my_sqrt(double d){return sqrt(d);}
 
 // Implementation of SeriationGen
 
@@ -62,7 +65,7 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 //		cout << " ; ";
 //	}
 //	cout << "]; \n";
-	
+
 #ifndef NDEBUG
 	I(ublas::is_symmetric(X));
 	L("Make sure we got the right thing: tr(EX)=1\n");
@@ -71,13 +74,14 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 	for(unsigned int i=0;i<prob.F.size();i++){
 		ublas::matrix<double> R = prod(prob.F[i],X);
 		ublas::matrix_vector_range<SDPWrapper::AnswerT> diag(R, range (0,n), range (0,n));
-		double trace = ublas::sum(diag); 
+		double trace = ublas::sum(diag);
 		//L("Trace should be: %2.3f, Trace is: %2.3f\n",prob.b[i],trace);
 		I(fabs(trace-prob.b[i])<0.001);
 	}
 #endif
 
-#define Y_METHOD 3
+// TODO: Determine Method for rounding
+#define Y_METHOD 2
 #if (Y_METHOD == 1 || Y_METHOD == 3)
 	// cholesky-decomposition
 	L("Decompose X = V*V'\n");
@@ -93,53 +97,58 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 	lapack::syev( 'V', 'L', Eigv, lambda, lapack::minimal_workspace() );
 	ublas::vector<double>::iterator max_lambda = max_element(lambda.begin(),lambda.end());
 	int max_lambda_idx = std::distance(lambda.begin(),max_lambda);
+	ublas::vector<double> lambda_sqrt(n);
+	std::transform(lambda.begin(),lambda.end(),lambda_sqrt.begin(),my_sqrt);
 #endif
 
-#if Y_METHOD == 3
+#if Y_METHOD == 1
 	V = prod(trans(V),Eigv);
 #endif
 
+    // What do we want to maximize?
 	// maximize symmetric version of C
-	//ublas::symmetric_adaptor<SDPProb::MatT, ublas::upper> B(prob.C);
+	ublas::symmetric_adaptor<SDPProb::MatT, ublas::upper> B(prob.C);
 	// maximize original C
-	SDPProb::MatT& B = prob.C;
+	//SDPProb::MatT& B = prob.C;
 
 	L("Rank reduction using random hyperplanes\n");
 	ublas::vector<double> best_y(n);
-	double best_y_val = 1E6;
+	double best_y_val = -1E6;
 	//srand48(gCfg().getFloat("rand_adj_mat_gen.seed"));
 	ublas::vector<double> r(n);
 	ublas::vector<double> y(n);
 	int tries = gCfg().getInt("ser-gen.sdp-rand-plane-tries");
 	ExactDescriptiveStatistics yvalstats("y_val ");
 	for(int iter=0;iter<tries;iter++){
-		// generate vector from unit-vector
-		generate(r.begin(), r.end(), drand48); 
+		// generate unit-vector
+		generate(r.begin(), r.end(), drand48);
 		r -= ublas::scalar_vector<double>(n,0.5);
 		//r /= ublas::norm_2(r);
 
 #if Y_METHOD == 1
 		//use combination of cholesky-vectors
-		//noalias(y) = prod(ublas::trans(V),r);
-		noalias(y) = ublas::row(V,0);
-		sort(y.begin(),y.end());
+		noalias(y) = prod(ublas::trans(V),r);
+		//noalias(y) = ublas::row(V,0);
+		//sort(y.begin(),y.end());
+		//noalias(y) = r;
 #elif Y_METHOD == 2
 		// use combination of eigen-vectors
 		//noalias(y) = prod(Eigv,r);
-		noalias(y) = ublas::column(Eigv,max_lambda_idx);
+		noalias(y) = sqrt(lambda(max_lambda_idx)) * ublas::column(Eigv,max_lambda_idx);
 #elif Y_METHOD == 3
-		// use technique from Nemirovski, Roos, Terlaky 
+		// use technique from Nemirovski, Roos, Terlaky
 		for(unsigned int i=0;i<r.size();i++)
 			r(i) = r(i) > 0 ? 1 : -1;
-		noalias(y) = prod(V,r);
+		//noalias(y) =  element_prod(lambda_sqrt,prod(V,r));
+		noalias(y) =  prod(V,r);
 #endif
 		y /= ublas::norm_2(y);
 
-		// NOTE: problem was reformulated, s.t. C is negative and it can be _maximized_ by solver
-		double y_val = inner_prod(y,prod(-B,y));
+		double y_val = inner_prod(y,prod(B,y));
 		yvalstats += y_val;
 
-		if(y_val< best_y_val){
+		if(y_val> best_y_val){
+		    // the solver always _maximizes_
 			best_y_val = y_val;
 			best_y     = y;
 		}
@@ -152,7 +161,7 @@ SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<Adj
 //#define BEST_ELEM(X,tmp) util::arg_max(X.begin(),X.end(),tmp, l::_1*l::_1)
 #define BEST_ELEM(X,tmp) max_element(X.begin(),X.end())
 
-	// tricky: make sure x > 0 at all times. 
+	// tricky: make sure x > 0 at all times.
 	x += ublas::scalar_vector<double>(x.size(), *min_element(x.begin(),x.end()) + 1);
 
 	SeriationT ret;
