@@ -3,8 +3,9 @@
 
 #include "action.hpp"
 
-class SDPSimple:public Action{
+class Serialize:public Action{
 	virtual void operator()();
+	virtual ~Serialize();
 };
 
 #endif /* __SDP_SIMPLE_HPP__ */

@@ -13,4 +13,4 @@ include_directories(
 	${CMAKE_SOURCE_DIR}/sdp_wrappers
 	)
 
-add_library( actions SHARED action.hpp action.cpp sdp_simple.hpp sdp_simple.cpp )
+add_library( actions SHARED action_cfg.cpp action.hpp action.cpp serialize.hpp serialize.cpp )

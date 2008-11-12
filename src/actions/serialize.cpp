@@ -8,15 +8,15 @@
 #include <seriation_gen.hpp>
 #include <adjmat_gen.hpp>
 
-#include "sdp_simple.hpp"
+#include "serialize.hpp"
 #include <nana.h>
 
 using namespace std;
 using namespace boost;
 
-void SDPSimple::operator()()
+void Serialize::operator()()
 {
-	string adjmat_gen_name               = "RandomAdjMatGen";
+	string adjmat_gen_name               = gCfg().getString("serialize.adjmat_gen");
 	auto_ptr<AdjMatGen> adjmat_gen       = genericFactory<AdjMatGen>::instance().create(adjmat_gen_name);
 	if(!adjmat_gen.get())
 		throw logic_error(string("Supplied AdjMatGen `") + adjmat_gen_name + "' does not exist");
@@ -24,8 +24,10 @@ void SDPSimple::operator()()
 
 	shared_ptr<AdjMatGen::AdjMatT> adjmat_ptr((*adjmat_gen)());
 
-	string seriation_gen_name            = "SDPSeriationGen";
+	string seriation_gen_name            = gCfg().getString("serialize.seriation_gen");
 	auto_ptr<SeriationGen> seriation_gen = genericFactory<SeriationGen>::instance().create(seriation_gen_name);
+	if(!seriation_gen.get())
+		throw logic_error(string("Supplied SeriationGen `") + seriation_gen_name + "' does not exist");
 
 	seriation_gen->configure();
 
@@ -33,7 +35,10 @@ void SDPSimple::operator()()
 	randwalk = (*seriation_gen)(adjmat_ptr);
 }
 
+Serialize::~Serialize()
+{
+}
 
 namespace{
-	registerInFactory<Action, SDPSimple> registerBase("SDPSimple");
+	registerInFactory<Action, Serialize> registerBase("Serialize");
 }
