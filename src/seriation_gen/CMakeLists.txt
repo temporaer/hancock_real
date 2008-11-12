@@ -12,7 +12,8 @@ include_directories (
 	)
 
 add_library( seriation_gen SHARED 
-	seriation_gen_cfg.cpp      seriation_gen.hpp
+	seriation_gen_cfg.cpp      
+	seriation_gen.cpp          seriation_gen.hpp
 	sdp_seriation_gen.cpp      sdp_seriation_gen.hpp
 	sdp_seriation_prob_gen.cpp sdp_seriation_prob_gen.hpp 
 	sdp_prob.hpp

@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 10:25:05 PM
- *       Last Change: Sun Nov 02 09:00 PM 2008 CET
+ *       Last Change: Wed Nov 12 07:00 PM 2008 CET
  */
 #include <boost/numeric/ublas/matrix_proxy.hpp>
 #include <boost/numeric/ublas/io.hpp>
@@ -36,6 +36,17 @@ struct SDPSeriationGen::Impl{
 };
 SDPSeriationGen::Impl::~Impl(){
 }
+
+void SDPSeriationGen::configure()
+{
+	string sdp_wrapper_name          = gCfg().getString("ser-gen.sdp-wrapper");
+	auto_ptr<SDPWrapper> sdp_wrapper = genericFactory<SDPWrapper>::instance().create(sdp_wrapper_name);
+	if(!sdp_wrapper.get())
+		throw logic_error(string("Supplied SDPWrapper `") + sdp_wrapper_name + "' does not exist");
+	sdp_wrapper->configure();
+	setSDPWrapper(sdp_wrapper);
+}
+
 
 SeriationGen::SeriationT SDPSeriationGen::Impl::operator()(boost::shared_ptr<AdjMatT> adj_ptr)
 {
@@ -242,3 +253,6 @@ SDPSeriationGen::~SDPSeriationGen()
 {
 }
 
+namespace{
+	registerInFactory<SeriationGen, SDPSeriationGen> registerBase("SDPSeriationGen");
+}

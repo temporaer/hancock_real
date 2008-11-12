@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 07:45:51 PM
- *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
+ *       Last Change: Wed Nov 12 07:00 PM 2008 CET
  */
 
 #ifndef __SERIATION_GEN_HPP__
@@ -15,7 +15,8 @@ class SeriationGen{
 		typedef boost::numeric::ublas::matrix<double,
 				boost::numeric::ublas::column_major>               AdjMatT;
 
-		virtual SeriationT operator()(boost::shared_ptr<AdjMatT>)=0;
+		virtual SeriationT operator()(boost::shared_ptr<AdjMatT>);
+		virtual void configure();
 };
 
 

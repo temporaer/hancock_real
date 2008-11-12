@@ -1,5 +1,5 @@
 /*       Created   :  10/05/2008 10:21:12 PM
- *       Last Change: Thu Oct 23 10:00 AM 2008 CEST
+ *       Last Change: Wed Nov 12 07:00 PM 2008 CET
  */
 
 #ifndef __SDP_SERIATION_GEN_HPP__
@@ -18,6 +18,7 @@ class SDPSeriationGen : public SeriationGen
         SDPSeriationGen();
 		void setSDPWrapper(std::auto_ptr<SDPWrapper> w);
 		virtual SeriationT operator()(boost::shared_ptr<AdjMatT>);
+		virtual void configure();
 		virtual ~SDPSeriationGen();
 };
 #endif /* __SDP_SERIATION_GEN_HPP__ */
