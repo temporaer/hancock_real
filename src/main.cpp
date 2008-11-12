@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Wed Nov 12 07:00 PM 2008 CET
+ *       Last Change: Wed Nov 12 08:00 PM 2008 CET
  */
 
 #include <dlfcn.h>
@@ -22,7 +22,9 @@ using namespace std;
 
 
 int main(int argc, char* argv[]){
-	dlopen("actions/libactions.so",RTLD_LAZY);
+	void* err;
+	err = dlopen("actions/libactions.so",             RTLD_LAZY); I(err);
+	err = dlopen("sdp_wrappers/libsdp_wrappers.so",   RTLD_LAZY); I(err);
 
 	gCfg().parsecfg(argc,argv);
 
