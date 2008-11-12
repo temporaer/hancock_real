@@ -49,6 +49,7 @@
 #include <map>
 #include <memory>
 #include <vector>
+#include <iostream>
 
 typedef std::string defaultIDKeyType;
 
@@ -125,6 +126,13 @@ template <class manufacturedObj, typename classIDKey>
 std::auto_ptr<manufacturedObj> genericFactory<manufacturedObj, classIDKey>::create(const classIDKey &className) const
 {
     std::auto_ptr<manufacturedObj> ret(0);
+
+	// TODO: remove
+	//std::cout << "creating a "<<className<<std::endl;
+	//typename genericFactory<manufacturedObj,classIDKey>::FN_REGISTRY::const_iterator it;
+	//for(it=registry.begin();it!=registry.end();it++)
+		//std::cout << it->first<<std::endl;
+
     typename genericFactory<manufacturedObj,classIDKey>::FN_REGISTRY::const_iterator regEntry=registry.find(className);
     if (regEntry != registry.end()) {
         ret=(*regEntry).second();
@@ -146,6 +154,7 @@ public:
     registerInFactory(const classIDKey &id)
     {
         genericFactory<ancestorType>::instance().regCreateFn(id, createInstance);
+		//std::cout << "registring: " << id << std::endl;
     }
 };
 #endif
