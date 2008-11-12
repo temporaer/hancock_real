@@ -1,5 +1,5 @@
 /*       Created   :  10/03/2008 08:22:01 PM
- *       Last Change: Fri Oct 31 05:00 PM 2008 CET
+ *       Last Change: Sun Nov 02 09:00 PM 2008 CET
  */
 
 #include <dlfcn.h>
@@ -75,7 +75,7 @@ void writeToFile(
 	{
 		o << idxmap[path_perm[i].first] << " ";
 	}
-	if(path_perm.size()>0) 
+	if(path_perm.size()>0)
 		o << idxmap[path_perm.back().second];
 	o << " ] ; "<< endl;
 }
@@ -101,7 +101,7 @@ shared_ptr<RandomAdjMatGen::AdjMatT> copyAndPermute(shared_ptr<RandomAdjMatGen::
 	cout << endl;
 
 	// create new matrix
-	shared_ptr<RandomAdjMatGen::AdjMatT> ret_ptr(new RandomAdjMatGen::AdjMatT(org.size1(),org.size2())); 
+	shared_ptr<RandomAdjMatGen::AdjMatT> ret_ptr(new RandomAdjMatGen::AdjMatT(org.size1(),org.size2()));
 	RandomAdjMatGen::AdjMatT& ret = *ret_ptr;
 
 
@@ -167,7 +167,7 @@ void comparePathsPlain(shared_ptr<T> adj_ptr, const U& p, const U& p_perm){
 int main(int argc, char* argv[]){
 
 	dlopen("sdp_wrappers/libsdp_wrappers.so",RTLD_LAZY);
-	
+
 	gCfg().parsecfg(argc,argv);
 
 	RandomAdjMatGen matgen;
@@ -185,7 +185,7 @@ int main(int argc, char* argv[]){
 	SeriationGen::SeriationT randwalk,
 		randwalk_again1,
 		randwalk_again2,
-		randwalk_perm; 
+		randwalk_perm;
 
 #if 0
 	try{ randwalk        = walkgen(adjmat_ptr);
@@ -207,7 +207,7 @@ int main(int argc, char* argv[]){
 	writeToFile(out_file,*adjmat_ptr,randwalk, randwalk_perm);
 #else
 	ofstream paths("paths.dat");
-	for(int i=0;i<20;i++){
+	for(int i=0;i<500;i++){
 		shared_ptr<RandomAdjMatGen::AdjMatT> perm  (copyAndPermute(adjmat_ptr));
 		try{ randwalk_perm   = walkgen(perm);
 		}catch(const exception& e){ L("generating randwalk_perm failed: %s.\n",e.what()); }
